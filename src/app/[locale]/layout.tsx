@@ -10,9 +10,10 @@ const inter = Inter({
 	display: "swap",
 });
 
+// Next.js 15 expects params to be a Promise
 type Props = {
 	children: ReactNode;
-	params: { locale: string };
+	params: Promise<{ locale: string }>;
 };
 
 export async function generateStaticParams() {
@@ -22,9 +23,9 @@ export async function generateStaticParams() {
 export async function generateMetadata({
 	params,
 }: {
-	params: { locale: string | string[] };
+	params: Promise<{ locale: string | string[] }>;
 }) {
-	const resolvedParams = await Promise.resolve(params);
+	const resolvedParams = await params;
 	const locale = Array.isArray(resolvedParams.locale)
 		? resolvedParams.locale[0]
 		: resolvedParams.locale ?? "en";
@@ -35,7 +36,7 @@ export async function generateMetadata({
 }
 
 export default async function RootLayout({ children, params }: Props) {
-	const resolvedParams = await Promise.resolve(params);
+	const resolvedParams = await params;
 	const locale = Array.isArray(resolvedParams.locale)
 		? resolvedParams.locale[0]
 		: resolvedParams.locale ?? "en";
@@ -52,9 +53,7 @@ export default async function RootLayout({ children, params }: Props) {
 					defaultTheme="system"
 					enableSystem
 					disableTransitionOnChange>
-					<I18nProvider locale={locale}>
-						{children}
-					</I18nProvider>
+					<I18nProvider locale={locale}>{children}</I18nProvider>
 				</ThemeProvider>
 			</body>
 		</html>
