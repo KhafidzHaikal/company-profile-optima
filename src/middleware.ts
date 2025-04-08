@@ -1,9 +1,18 @@
+import createMiddleware from 'next-intl/middleware';
 import { NextRequest, NextResponse } from "next/server";
 
-export function middleware(req: NextRequest) {
-  const { pathname } = req.nextUrl;
+// Create the next-intl middleware
+const intlMiddleware = createMiddleware({
+  locales: ['en', 'id'],
+  defaultLocale: 'en',
+  // You can keep the cookie logic here
+  localeDetection: true
+});
 
-  // ✅ Exclude API routes & static files (CSS, JS, images)
+export default function middleware(request: NextRequest) {
+  // Skip middleware for static files and API routes
+  const { pathname } = request.nextUrl;
+  
   if (
     pathname.startsWith("/api") ||
     pathname.startsWith("/_next") ||
@@ -13,13 +22,14 @@ export function middleware(req: NextRequest) {
   ) {
     return NextResponse.next();
   }
-
-  const locale = req.cookies.get("NEXT_LOCALE")?.value || "en";
-
-  // ✅ Only redirect if not already on a locale path
-  if (!pathname.startsWith("/en") && !pathname.startsWith("/id")) {
-    return NextResponse.redirect(new URL(`/${locale}${pathname}`, req.url));
-  }
-
-  return NextResponse.next();
+  
+  // Use the intl middleware for everything else
+  return intlMiddleware(request);
 }
+
+export const config = {
+  matcher: [
+    // Match all routes except internal files
+    '/((?!api|_next|static|images|favicon.ico).*)'
+  ]
+};
