@@ -46,7 +46,7 @@ const Navbar = () => {
 
 			{/* Desktop Navbar */}
 			<nav className="hidden lg:flex fixed top-0 z-50 w-full bg-background/70 backdrop-blur-sm shadow-sm">
-				<div className="container mx-32 py-2 flex items-center justify-between">
+				<div className="container mx-12 lg:mx-32 py-2 flex items-center justify-between">
 					<Link href="/" aria-label="Optima Logo">
 						<Image
 							src="/images/logo.png"

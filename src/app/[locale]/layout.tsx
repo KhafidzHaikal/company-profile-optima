@@ -47,7 +47,7 @@ export default async function RootLayout({ children, params }: Props) {
 				<link rel="shortcut icon" href="/images/favicon.ico" />
 			</head>
 			<body
-				className={`${inter.variable} font-inter antialiased container flex flex-col min-h-screen scroll-smooth`}>
+				className={`${inter.variable} font-inter antialiased flex flex-col min-h-screen scroll-smoot mx-auto`}>
 				<ThemeProvider
 					attribute="class"
 					defaultTheme="system"
