@@ -13,8 +13,8 @@ export default function PackagePage() {
 		<main>
 			<Navbar />
 			<section className="py-12 mx-12 lg:mx-32 mt-12">
-				<p className="text-2xl text-yellow-400">{t("title-menu-homepage")}</p>
-				<p className="text-md my-4">{t("subtitle-menu-homepage")}</p>
+				<p className="text-2xl text-yellow-400">{t("package-title")}</p>
+				<p className="text-md my-4">{t("package-subtitle")}</p>
 				<div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
 					<div className="h-full dark:bg-white shadow-md rounded-md ml-2.5 sm:ml-4 p-0">
 						<Image

@@ -70,15 +70,8 @@ const Navbar = () => {
 									<Link href="/package">{t("package")}</Link>
 								</NavigationMenuLink>
 							</NavigationMenuItem>
-
 							<NavigationMenuItem>
-								<NavigationMenuLink asChild>
-									<Link href="/contact">{t("contact")}</Link>
-								</NavigationMenuLink>
-							</NavigationMenuItem>
-
-							<NavigationMenuItem>
-								<NavigationMenuTrigger>{t("portfolio")}</NavigationMenuTrigger>
+								<NavigationMenuTrigger>{t("destination")}</NavigationMenuTrigger>
 								<NavigationMenuContent>
 									<ul className="grid gap-3 p-4 w-[250px]">
 										{components.map((component) => (
@@ -91,6 +84,11 @@ const Navbar = () => {
 										))}
 									</ul>
 								</NavigationMenuContent>
+							</NavigationMenuItem>
+							<NavigationMenuItem>
+								<NavigationMenuLink asChild>
+									<Link href="/portfolio">{t("portfolio")}</Link>
+								</NavigationMenuLink>
 							</NavigationMenuItem>
 						</NavigationMenuList>
 					</NavigationMenu>
