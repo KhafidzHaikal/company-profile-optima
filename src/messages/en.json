@@ -9,6 +9,7 @@
   "destination": "Destination",
   "social-media": "Our Social Media",
   "see-more": "Lihat Lebih Banyak",
+  "learn-more": "Learn More",
   "person": "Person",
   "jumbotron-text-1": "An Unforgettable Adventure Begins Here",
   "jumbotron-text-2": "Plan Your Trip With Us!",
@@ -31,5 +32,11 @@
   "enter-email": "Enter Your Email",
   "office-address": "Office Address",
   "package-title": "We Provide The Perfect Package for Your Trip",
-  "package-subtitle": "Discover tailor made travel packages that combine comfort, adventure, and value, designed to turn your dream journey into reality."
+  "package-subtitle": "Discover tailor made travel packages that combine comfort, adventure, and value, designed to turn your dream journey into reality.",
+  "destination-title": "Tourist Destinations We Provide",
+  "destination-subtitle": "Destinations We Provide are Dubai and Abu Dhabi City.",
+  "destination-card-title-dubai": "Destinations visited include Dubai Fountain & Burj Lake, Museum of the Future, Dubai Desert Safari, Al Fahidi Historical District, Dubai Marina, Emirates Palace.",
+  "destination-card-title-abu-dhabi": "Destinations visited include Dubai Fountain & Burj Lake, Museum of the Future, Dubai Desert Safari, Al Fahidi Historical District, Dubai Marina, Emirates Palace.",
+  "portfolio-title": "Experience and Togetherness During The Adventure",
+  "portfolio-subtitle": "We've been on many adventures with our customers, and we've certainly provided experiences and togetherness and memories that will last a lifetime."
 }

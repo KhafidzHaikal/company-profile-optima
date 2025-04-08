@@ -9,6 +9,7 @@
   "destination": "Destinasi",
   "social-media": "Sosial Media Kami",
   "see-more": "Lihat Lebih Banyak",
+  "learn-more": "Pelajari Lebih Lanjut",
   "person": "Orang",
   "jumbotron-text-1": "Petualangan Tak Terlupakan Dimulai Di Sini",
   "jumbotron-text-2": "Rencanakan Perjalananmu Bersama Kami!",
@@ -31,5 +32,11 @@
   "enter-email": "Masukkan Email",
   "office-address": "Alamat Kantor",
   "package-title": "Kami Menyediakan Paket Sempurna untuk Perjalanan Anda",
-  "package-subtitle": "Temukan paket perjalanan yang dibuat khusus, menggabungkan kenyamanan, petualangan, dan nilai terbaik, dirancang untuk mewujudkan perjalanan impian Anda."
+  "package-subtitle": "Temukan paket perjalanan yang dibuat khusus, menggabungkan kenyamanan, petualangan, dan nilai terbaik, dirancang untuk mewujudkan perjalanan impian Anda.",
+  "destination-title": "Destinasi Wisata yang Kami Sediakan",
+  "destination-subtitle": "Destinasi yang Kami Sediakan adalah Kota Dubai dan Abu Dhabi.",
+  "destination-card-title-dubai": "Destinasi yang dikunjungi meliputi Dubai Fountain & Burj Lake, Museum of the Future, Dubai Desert Safari, Distrik Bersejarah Al Fahidi, Dubai Marina, Emirates Palace.",
+  "destination-card-title-abu-dhabi": "Destinasi yang dikunjungi meliputi Masjid Agung Sheikh Zayed, Louvre Abu Dhabi, Qasr Al Watan, Pulau Saadiyat, Corniche Abu Dhabi, dan Pasar Kurma.",
+   "portfolio-title": "Pengalaman dan Kebersamaan Selama Petualangan",
+  "portfolio-subtitle": "Kami telah melalui banyak petualangan bersama pelanggan kami, dan kami tentu saja memberikan pengalaman, kebersamaan, dan kenangan yang akan bertahan seumur hidup."
 }

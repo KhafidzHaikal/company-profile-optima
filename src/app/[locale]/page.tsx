@@ -1,8 +1,5 @@
-"use client";
-
 import Navbar from "@/components/navbar/Navbar";
 import { Button } from "@/components/ui/button";
-import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { FaWhatsapp } from "react-icons/fa";
 import { IoArrowRedoOutline } from "react-icons/io5";
@@ -13,9 +10,19 @@ import {
 } from "@/components/ui/carousel";
 import Image from "next/image";
 import Footer from "@/components/footer/Footer";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 
-export default function Home() {
-	const t = useTranslations();
+type Props = {
+	params?: Promise<{ locale: string }>;
+};
+
+export default async function Home({ params }: Props) {
+	const resolvedParams = params ? await params : { locale: "en" }; // default fallback
+
+	const { locale } = resolvedParams;
+	setRequestLocale(locale);
+	const t = await getTranslations({ locale });
+
 	return (
 		<main>
 			<Navbar />

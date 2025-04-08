@@ -1,9 +1,11 @@
+"use client"
+
 import { FaWhatsapp, FaInstagram } from "react-icons/fa";
 import { ArrowRight } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 const Footer = () => {
-    const t = useTranslations();
+	const t = useTranslations();
 	return (
 		<footer className="bg-black text-white px-6 py-12">
 			<div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -38,7 +40,9 @@ const Footer = () => {
 				</div>
 				<div className="grid grid-cols-1 md:grid-cols-3 gap-4">
 					<div>
-						<h3 className="text-yellow-400 font-semibold mb-2">{t("destination")}</h3>
+						<h3 className="text-yellow-400 font-semibold mb-2">
+							{t("destination")}
+						</h3>
 						<ul className="space-y-1">
 							<li>Abu Dhabi</li>
 							<li>Dubai</li>
@@ -46,7 +50,9 @@ const Footer = () => {
 					</div>
 
 					<div>
-						<h3 className="text-yellow-400 font-semibold mb-2">{t("portfolio")}</h3>
+						<h3 className="text-yellow-400 font-semibold mb-2">
+							{t("portfolio")}
+						</h3>
 						<ul className="space-y-1">
 							<li>Abu Dhabi Travel Pic</li>
 							<li>Dubai Travel Pic</li>
@@ -58,16 +64,10 @@ const Footer = () => {
 							{t("social-media")}
 						</h3>
 						<div className="flex gap-4 text-2xl mt-2">
-							<a
-								href=""
-								target="_blank"
-								rel="noopener noreferrer">
+							<a href="" target="_blank" rel="noopener noreferrer">
 								<FaWhatsapp />
 							</a>
-							<a
-								href=""
-								target="_blank"
-								rel="noopener noreferrer">
+							<a href="" target="_blank" rel="noopener noreferrer">
 								<FaInstagram />
 							</a>
 						</div>

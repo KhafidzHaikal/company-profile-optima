@@ -1,4 +1,3 @@
-import { useTranslations } from "next-intl";
 import { FaWhatsapp } from "react-icons/fa";
 import { IoArrowRedoOutline } from "react-icons/io5";
 import Image from "next/image";
@@ -6,15 +5,25 @@ import Footer from "@/components/footer/Footer";
 import Navbar from "@/components/navbar/Navbar";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 
-export default function PackagePage() {
-	const t = useTranslations();
+type Props = {
+	params?: Promise<{ locale: string }>;
+};
+
+export default async function PackagePage({ params }: Props) {
+	const resolvedParams = params ? await params : { locale: "en" }; // default fallback
+
+	const { locale } = resolvedParams;
+	setRequestLocale(locale);
+	const t = await getTranslations({ locale });
+
 	return (
 		<main>
 			<Navbar />
 			<section className="py-12 mx-12 lg:mx-32 mt-12">
-				<p className="text-2xl text-yellow-400">{t("package-title")}</p>
-				<p className="text-md my-4">{t("package-subtitle")}</p>
+				<p className="text-2xl font-bold text-yellow-400">{t("package-title")}</p>
+				<p className="text-md mt-8 mb-12">{t("package-subtitle")}</p>
 				<div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
 					<div className="h-full dark:bg-white shadow-md rounded-md ml-2.5 sm:ml-4 p-0">
 						<Image

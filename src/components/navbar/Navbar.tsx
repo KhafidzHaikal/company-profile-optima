@@ -19,9 +19,9 @@ import { cn } from "@/lib/utils";
 
 const components: { title: string; href: string; description: string }[] = [
 	{
-		title: "Portfolio",
-		href: "/tete",
-		description: "Realize your style with screen printing or shirt printing",
+		title: "Destination",
+		href: "/destination",
+		description: "Destination",
 	},
 ];
 
