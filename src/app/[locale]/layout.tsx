@@ -3,6 +3,7 @@ import "../globals.css";
 import { I18nProvider } from "@/components/I18nProvider";
 import { ReactNode } from "react";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { Analytics } from "@vercel/analytics/react"
 
 const inter = Inter({
 	subsets: ["latin"],
@@ -55,6 +56,7 @@ export default async function RootLayout({ children, params }: Props) {
 					disableTransitionOnChange>
 					<I18nProvider locale={locale}>{children}</I18nProvider>
 				</ThemeProvider>
+				<Analytics />
 			</body>
 		</html>
 	);
