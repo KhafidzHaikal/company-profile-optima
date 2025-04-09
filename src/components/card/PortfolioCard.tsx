@@ -4,13 +4,18 @@ import Image from "next/image";
 
 const images = [
   "/images/optima-foto-1.png",
-  "/images/optima-foto-1.png",
-  "/images/optima-foto-1.png",
-  "/images/optima-foto-1.png",
-  "/images/optima-foto-1.png",
-  "/images/optima-foto-1.png",
-  "/images/optima-foto-1.png",
-  "/images/optima-foto-1.png",
+  "/images/optima-foto-2.png",
+  "/images/optima-foto-3.png",
+  "/images/optima-foto-4.png",
+  "/images/optima-foto-5.png",
+  "/images/optima-foto-6.png",
+  "/images/optima-foto-7.png",
+  "/images/optima-foto-8.png",
+  "/images/optima-foto-9.png",
+  "/images/optima-foto-10.png",
+  "/images/optima-foto-11.png",
+  "/images/optima-foto-12.png",
+  "/images/optima-foto-13.png",
   
 ];
 
