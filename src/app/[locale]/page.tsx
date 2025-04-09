@@ -24,7 +24,7 @@ export default async function Home({ params }: Props) {
 	const t = await getTranslations({ locale });
 
 	return (
-		<main>
+		<main className="mt-12 lg:mt-0">
 			<Navbar />
 
 			<section

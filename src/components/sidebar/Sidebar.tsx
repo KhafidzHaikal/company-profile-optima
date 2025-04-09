@@ -50,31 +50,36 @@ export function HumburgerButton() {
             >
               {t("home")}
             </Link>
-
+            <Link
+              href="/"
+              className="text-base font-medium text-muted-foreground hover:text-primary transition-colors"
+            >
+              {t("package")}
+            </Link>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button
                   variant="ghost"
                   className="w-full justify-start px-0 text-base font-medium text-muted-foreground hover:text-primary"
                 >
-                  {t("package")}
+                  {t("destination")}
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent side="right" className="w-56">
                 <DropdownMenuSeparator />
                 <DropdownMenuItem asChild>
-                  <Link href="/tete" className="w-full px-2 py-1 text-sm">
-                    Tete
+                  <Link href="/destination" className="w-full px-2 py-1 text-sm">
+                    {t("destination")}
                   </Link>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
 
             <Link
-              href="/contact"
+              href="/portfolio"
               className="text-base font-medium text-muted-foreground hover:text-primary transition-colors"
             >
-              {t("contact")}
+              {t("portfolio")}
             </Link>
           </nav>
         </div>

@@ -15,7 +15,7 @@ export default async function PortfolioPage({ params }: Props) {
 	const t = await getTranslations({ locale });
 
 	return (
-		<main>
+		<main className="mt-12 lg:mt-0">
 			<Navbar />
 			<section className="py-12 mx-12 lg:mx-32 lg:mt-12">
 				<p className="text-2xl font-bold text-yellow-400">

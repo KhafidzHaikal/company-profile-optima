@@ -17,7 +17,7 @@ export default async function DestinationPage({ params }: Props) {
 	const t = await getTranslations({ locale });
 
 	return (
-		<main>
+		<main className="mt-12 lg:mt-0">
 			<Navbar />
 			<section className="py-12 mx-12 lg:mx-32 lg:mt-12">
 				<p className="text-2xl font-bold text-yellow-400">
@@ -29,7 +29,7 @@ export default async function DestinationPage({ params }: Props) {
 					title="Dubai"
 					description={t("destination-card-title-dubai")}
 					imageUrl="/images/destination-poto-dubai.png"
-					link={`/${locale}/package`}
+					link={`/${locale}/destination/dubai`}
 				/>
 				<DestinationCard
 					title="Abu Dhabi"

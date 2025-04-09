@@ -19,7 +19,7 @@ export default async function PackagePage({ params }: Props) {
 	const t = await getTranslations({ locale });
 
 	return (
-		<main>
+		<main className="mt-12 lg:mt-0">
 			<Navbar />
 			<section className="py-12 mx-12 lg:mx-32 mt-12">
 				<p className="text-2xl font-bold text-yellow-400">{t("package-title")}</p>
@@ -52,7 +52,7 @@ export default async function PackagePage({ params }: Props) {
 										<FaWhatsapp className="text-md" />
 									</Button>
 								</Link>
-								<Link href={""}>
+								<Link href={"/package/abu-dhabi"}>
 									<Button className="mt-0 md:mt-4 xl:mt-0 rounded-md py-4 flex items-center gap-2 mx-auto sm:mx-0 text-black bg-[#F3C623] hover:bg-[#f5d666] cursor-pointer w-full">
 										{t("text-button-card")}
 										<IoArrowRedoOutline className="text-md" />
@@ -88,12 +88,7 @@ export default async function PackagePage({ params }: Props) {
 										<FaWhatsapp className="text-md" />
 									</Button>
 								</Link>
-								<Link href={""}>
-									<Button className="mt-0 md:mt-4 xl:mt-0 rounded-md py-4 flex items-center gap-2 mx-auto sm:mx-0 text-black bg-[#F3C623] hover:bg-[#f5d666] cursor-pointer w-full">
-										{t("text-button-card")}
-										<IoArrowRedoOutline className="text-md" />
-									</Button>
-								</Link>
+								/package/dubai
 							</div>
 						</div>
 					</div>
