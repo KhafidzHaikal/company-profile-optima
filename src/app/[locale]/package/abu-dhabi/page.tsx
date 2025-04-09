@@ -32,7 +32,7 @@ export default async function AbuDhabiPage({ params }: Props) {
 				</div>
 				<p className="text-md mt-8 mb-8">{t("abu-dhabi-subtitle")}</p>
 				<Link href={""}>
-					<Button className="mt-4 mb-8 rounded-md py-4 flex items-center gap-2  text-black bg-[#F3C623] border-2 border-black cursor-pointer">
+					<Button className="mt-4 mb-8 rounded-md py-4 flex items-center gap-2  text-black bg-[#F3C623] hover:bg-[#f4e19d] border-2 border-black cursor-pointer">
 						{t("contact")}
 						<FaWhatsapp className="text-md" />
 					</Button>
@@ -103,7 +103,7 @@ export default async function AbuDhabiPage({ params }: Props) {
 				</div>
 			</section>
 			<section
-				className="py-12 mx-12 lg:mx-32 lg:mt-12 rounded-md p-8"
+				className="py-12 mx-12 lg:mx-32 lg:mt-12 rounded-md p-8 mb-12"
 				id="background-yellow">
 				<p className="text-3xl font-bold text-black">{t("dubai-footer")}</p>
 				<p className="text-md mt-4 text-black">{t("dubai-footer-desc")}</p>
