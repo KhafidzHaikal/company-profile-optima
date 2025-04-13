@@ -18,6 +18,10 @@ export default function middleware(request: NextRequest) {
     pathname.startsWith("/_next") ||
     pathname.startsWith("/static") ||
     pathname.startsWith("/images") ||
+    pathname.startsWith("/uploads") ||
+    pathname.startsWith("/login-admin-optima") ||
+    pathname.startsWith("/register-just-admin") ||
+    pathname.startsWith("/dashboard") ||
     pathname.startsWith("/favicon.ico")
   ) {
     return NextResponse.next();
