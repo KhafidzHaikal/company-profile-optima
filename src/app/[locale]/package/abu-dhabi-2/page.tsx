@@ -43,7 +43,7 @@ export default async function AbuDhabi2Page({ params }: Props) {
 
 					{/* Day 1 */}
 					<p className="text-xl font-bold text-yellow-400 mt-4">Day 1</p>
-					<ul className="list-disc list-inside dark:text-white text-black space-y-2 ml-4 lg:ml-12 mt-2 text-md">
+					<ul className="list-disc list-inside dark:text-white text-black space-y-2 ml-4 lg:ml-12 mt-2 text-sm">
 						<li>{t("abu-dhabi-day1-new.point1")}</li>
 						<li>{t("abu-dhabi-day1-new.point2")}</li>
 						<li>{t("abu-dhabi-day1-new.point3")}</li>
@@ -55,7 +55,7 @@ export default async function AbuDhabi2Page({ params }: Props) {
 
 					{/* Day 2 */}
 					<p className="text-xl font-bold text-yellow-400 mt-6">Day 2</p>
-					<ul className="list-disc list-inside dark:text-white text-black space-y-2 ml-4 lg:ml-12 mt-2 text-md">
+					<ul className="list-disc list-inside dark:text-white text-black space-y-2 ml-4 lg:ml-12 mt-2 text-sm">
 						<li>{t("abu-dhabi-day2-new.point1")}</li>
 						<li>{t("abu-dhabi-day2-new.point2")}</li>
 						<li>{t("abu-dhabi-day2-new.point3")}</li>
@@ -67,7 +67,7 @@ export default async function AbuDhabi2Page({ params }: Props) {
 
 					{/* Day 3 */}
 					<p className="text-xl font-bold text-yellow-400 mt-6">Day 3</p>
-					<ul className="list-disc list-inside dark:text-white text-black space-y-2 ml-4 lg:ml-12 mt-2 text-md">
+					<ul className="list-disc list-inside dark:text-white text-black space-y-2 ml-4 lg:ml-12 mt-2 text-sm">
 						<li>{t("abu-dhabi-day3-new.point1")}</li>
 						<li>{t("abu-dhabi-day3-new.point2")}</li>
 						<li>{t("abu-dhabi-day3-new.point3")}</li>
@@ -78,7 +78,7 @@ export default async function AbuDhabi2Page({ params }: Props) {
 
 					{/* Day 4 */}
 					<p className="text-xl font-bold text-yellow-400 mt-6">Day 4</p>
-					<ul className="list-disc list-inside dark:text-white text-black space-y-2 ml-4 lg:ml-12 mt-2 text-md">
+					<ul className="list-disc list-inside dark:text-white text-black space-y-2 ml-4 lg:ml-12 mt-2 text-sm">
 						<li>{t("abu-dhabi-day4-new.point1")}</li>
 						<li>{t("abu-dhabi-day4-new.point2")}</li>
 						<li>{t("abu-dhabi-day4-new.point3")}</li>

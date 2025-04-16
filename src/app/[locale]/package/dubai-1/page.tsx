@@ -43,7 +43,7 @@ export default async function DubaiPaket1Page({ params }: Props) {
 
 					{/* Day 1 */}
 					<p className="text-xl font-bold text-yellow-400 mt-4">Day 1</p>
-					<ul className="list-disc list-inside dark:text-white text-black space-y-2 ml-4 lg:ml-12 mt-2 text-md">
+					<ul className="list-disc list-inside dark:text-white text-black space-y-2 ml-4 lg:ml-12 mt-2 text-sm">
 						<li>{t("dubai-day1.point1")}</li>
 						<li>{t("dubai-day1.point2")}</li>
 						<li>{t("dubai-day1.point3")}</li>
@@ -53,7 +53,7 @@ export default async function DubaiPaket1Page({ params }: Props) {
 
 					{/* Day 2 */}
 					<p className="text-xl font-bold text-yellow-400 mt-6">Day 2</p>
-					<ul className="list-disc list-inside dark:text-white text-black space-y-2 ml-4 lg:ml-12 mt-2 text-md">
+					<ul className="list-disc list-inside dark:text-white text-black space-y-2 ml-4 lg:ml-12 mt-2 text-sm">
 						<li>{t("dubai-day2.point1")}</li>
 						<li>{t("dubai-day2.point2")}</li>
 						<li>{t("dubai-day2.point3")}</li>
@@ -64,7 +64,7 @@ export default async function DubaiPaket1Page({ params }: Props) {
 
 					{/* Day 3 */}
 					<p className="text-xl font-bold text-yellow-400 mt-6">Day 3</p>
-					<ul className="list-disc list-inside dark:text-white text-black space-y-2 ml-4 lg:ml-12 mt-2 text-md">
+					<ul className="list-disc list-inside dark:text-white text-black space-y-2 ml-4 lg:ml-12 mt-2 text-sm">
 						<li>{t("dubai-day3.point1")}</li>
 						<li>{t("dubai-day3.point2")}</li>
 						<li>{t("dubai-day3.point3")}</li>
