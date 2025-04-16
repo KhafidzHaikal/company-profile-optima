@@ -51,7 +51,7 @@ export function HumburgerButton() {
               {t("home")}
             </Link>
             <Link
-              href="/"
+              href="/package"
               className="text-base font-medium text-muted-foreground hover:text-primary transition-colors"
             >
               {t("package")}
@@ -68,8 +68,13 @@ export function HumburgerButton() {
               <DropdownMenuContent side="right" className="w-56">
                 <DropdownMenuSeparator />
                 <DropdownMenuItem asChild>
-                  <Link href="/destination" className="w-full px-2 py-1 text-sm">
-                    {t("destination")}
+                  <Link href="/destination/abu-dhabi" className="w-full px-2 py-1 text-sm">
+                    Abu Dhabi
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href="/destination/dubai" className="w-full px-2 py-1 text-sm">
+                    Dubai
                   </Link>
                 </DropdownMenuItem>
               </DropdownMenuContent>
