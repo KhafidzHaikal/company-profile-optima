@@ -17,10 +17,12 @@
   "jumbotron-text-button": "Hubungi Kami Segera",
   "title-menu-homepage": "Paket Spesial Untuk Anda",
   "subtitle-menu-homepage": "Temukan paket perjalanan yang dibuat khusus, menggabungkan kenyamanan, petualangan, dan nilai terbaik, dirancang untuk mewujudkan perjalanan impian Anda.",
+  "text-button-card": "Detail",
+
   "text-card-package": "Paket Tur Kota Abu Dhabi",
   "price-1": "IDR 10,153,038.91",
   "text-card-description": "Tur wisata ke landmark terkenal seperti Masjid Agung Sheikh Zayed, Louvre Abu Dhabi, dan Qasr Al Watan.",
-  "text-button-card": "Detail",
+
   "title-menu-bottom": "Momen Perjalanan yang Menginspirasi",
   "subtitle-menu-bottom": "Jelajahi galeri perjalanan kami dan temukan inspirasi untuk destinasi impian Anda.",
   "title-menu-next-bottom": "Pilih Destinasi Anda",
@@ -55,12 +57,147 @@
   "dubai-footer-desc": "Anda dapat berkonsultasi dengan kami untuk informasi lebih lanjut.",
   "abu-dhabi-subtitle": "Penjelajahan Ikonik dalam tur wisata satu hari ke landmark terkenal seperti Masjid Agung Sheikh Zayed, Louvre Abu Dhabi, dan Qasr Al Watan.",
   "abu-dhabi-subtitle-1": "Apa yang akan Anda dapatkan?",
-  "abu-dhabi-point-1": "Penjelajahan ikonik dalam satu hari",
-  "abu-dhabi-point-2": "Kunjungan ke Masjid Agung Sheikh Zayed",
-  "abu-dhabi-point-3": "Eksplorasi Louvre Abu Dhabi atau Qasr Al Watan",
-  "abu-dhabi-point-4": "Foto-foto Emirates Palace dan Pantai Corniche",
-  "abu-dhabi-point-5": "Makan siang di restoran lokal",
-  "abu-dhabi-point-6": "Transportasi pribadi + pemandu wisata berbahasa Inggris/Indonesia",
+
+  "dubai-itinerary-title": "Itinerary Wisata Dubai",
+  "dubai-day1": {
+    "point1": "Kedatangan di Dubai – dijemput staf travel di bandara",
+    "point2": "Transfer privat ke hotel",
+    "point3": "Check-in hotel bintang 4 (contoh: Rove Downtown, ibis One Central)",
+    "point4": "Briefing singkat itinerary oleh perwakilan travel",
+    "point5": "Makan malam opsional: Diatur oleh travel (restoran halal dekat hotel)"
+  },
+  "dubai-day2": {
+    "point1": "Sarapan di hotel",
+    "point2": "Dijemput oleh guide resmi untuk City Tour Dubai",
+    "point3": "Pagi - Siang: Destinasi dengan penjelasan & spot foto: Jumeirah Mosque, Burj Al Arab (pantai Umm Suqeim), The Pointe di Palm Jumeirah, Souk Madinat Jumeirah, Dubai Marina Walk",
+    "point4": "Masuk Burj Khalifa At The Top + pertunjukan Dubai Fountain",
+    "point5": "Desert Safari & Naik Unta",
+    "point6": "Makan malam & kembali ke hotel"
+  },
+  "dubai-day3": {
+    "point1": "Sarapan di hotel",
+    "point2": "Waktu bebas untuk aktivitas opsional: Museum of the Future atau belanja (dibantu agen)",
+    "point3": "Check-out hotel & transfer ke bandara"
+  },
+
+  "term-and-condition-title": "Syarat & Ketentuan",
+  "term-and-condition": {
+    "point1": "Belum termasuk tiket pesawat dan Visa",
+    "point2": "Uang muka pendaftaran tidak dapat dikembalikan",
+    "point3": "Airport Tax International, Fuel Surcharge, biaya visa dan asuransi perjalanan pribadi dapat berubah sewaktu-waktu, dan akan disesuaikan kepada peserta sebelum keberangkatan.",
+    "point4": "Apabila dalam periode tour di kota-kota yang dikunjungi sedang berlangsung pameran / konferensi, atau hotel yang ditawarkan sedang penuh, maka akan diganti dengan hotel-hotel lain yang setaraf di kota terdekat",
+    "point5": "Apabila terjadi Force Majeur (kondisi di luar kendali seperti : kehilangan, kerusakan, gangguan, keterlambatan sarana angkutan/transportasi, bencana alam dll) yang dapat memengaruhi acara tour akan diubah dan bersifat non-refundable (tidak dapat dikembalikan). Dan Biaya Tour tidak termasuk segala pengeluaran tambahan yang disebabkan oleh Force Majeur",
+    "point6": "Apabila tamu ada yg mau mengubah jadwal penerbangan / extend (Deviasi akan dikenakan biaya sesuai dengan kondisi Airlines yang bersangkutan)"
+  },
+
+  "dubai-new-itinerary-title": "Itinerary Keluarga Dubai",
+  "dubai-new-day1": {
+    "point1": "Hari 1: Kedatangan di Dubai (Pagi / Siang)",
+    "point2": "Penjemputan oleh staf travel di bandara",
+    "point3": "Transfer privat ke hotel",
+    "point4": "Check-in hotel (bintang 4, contoh: Rove Downtown, ibis One Central)",
+    "point5": "Jalan-jalan sore ke Dubai Miracle Garden",
+    "point6": "Briefing singkat itinerary oleh perwakilan travel",
+    "point7": "Makan malam: Diatur oleh travel (restoran halal dekat hotel)"
+  },
+  "dubai-new-day2": {
+    "point1": "Sarapan di hotel",
+    "point2": "Seharian di Legoland Dubai atau Motiongate",
+    "point3": "Antar jemput pulang-pergi ke Dubai Parks & Resort",
+    "point4": "Kembali ke hotel"
+  },
+  "dubai-new-day3": {
+    "point1": "Sarapan di hotel",
+    "point2": "Pagi - Siang: Kunjungan destinasi dengan penjelasan sejarah & foto",
+    "point3": "Jumeirah Mosque (photo stop)",
+    "point4": "Burj Al Arab (photo stop di pantai Umm Suqeim)",
+    "point5": "The Pointe, Palm Jumeirah (pemandangan Atlantis The Palm)",
+    "point6": "Souk Madinat Jumeirah – suasana pasar tradisional mewah",
+    "point7": "Dubai Marina Walk – jalan santai atau coffee break"
+  },
+  "dubai-new-day4": {
+    "point1": "Sarapan dan Check-out",
+    "point2": "Belanja oleh-oleh di Karama Market / Deira",
+    "point3": "Transfer ke Bandara (diantar oleh tim travel)"
+  },
+
+  "abu-dhabi-itinerary-title": "Itinerary Abu Dhabi",
+
+  "abu-dhabi-day1": {
+    "point1": "Kedatangan di Dubai (Pagi/Siang)",
+    "point2": "Penjemputan oleh staf travel di bandara",
+    "point3": "Transfer privat ke hotel",
+    "point4": "Check-in hotel (bintang 4, contoh: Rove Downtown, ibis One Central)",
+    "point5": "Jalan-jalan sore ke Dubai Miracle Garden",
+    "point6": "Briefing singkat itinerary oleh perwakilan travel",
+    "point7": "Makan malam: Diatur oleh travel (restoran halal dekat hotel)"
+  },
+
+  "abu-dhabi-day2": {
+    "point1": "Sarapan di hotel",
+    "point2": "Seharian di Legoland Dubai atau Motiongate",
+    "point3": "Antar jemput pulang-pergi ke Dubai Parks & Resort",
+    "point4": "Kembali ke hotel"
+  },
+
+  "abu-dhabi-day3": {
+    "point1": "Sarapan di hotel",
+    "point2": "Pagi - Siang: Destinasi dikunjungi (dengan penjelasan sejarah & spot foto)",
+    "point3": "Jumeirah Mosque (photo stop)",
+    "point4": "Burj Al Arab (photo stop di pantai Umm Suqeim)",
+    "point5": "The Pointe, Palm Jumeirah (view Atlantis The Palm)",
+    "point6": "Souk Madinat Jumeirah – suasana pasar tradisional mewah",
+    "point7": "Dubai Marina Walk – bebas jalan atau coffee break",
+    "point8": "Siang: Masuk ke Dubai Aquarium & Underwater Zoo",
+    "point9": "Sore ke Global Village, kembali ke hotel"
+  },
+
+  "abu-dhabi-day4": {
+    "point1": "Sarapan dan Check-out",
+    "point2": "Belanja oleh-oleh di Karama Market / Deira",
+    "point3": "Transfer ke Bandara (diantar oleh tim travel)"
+  },
+
+  "abu-dhabi-itinerary-title": "Abu Dhabi Itinerary",
+
+  "abu-dhabi-day1-new": {
+    "point1": "Arrival in Abu Dhabi (Morning/Afternoon)",
+    "point2": "Pick-up by travel staff at the airport",
+    "point3": "Private transfer to hotel & check-in at 4-star hotel with short rest",
+    "point4": "Visit to Sheikh Zayed Grand Mosque",
+    "point5": "Photo stop at Emirates Palace & Corniche",
+    "point6": "Dinner: Arranged by travel (local halal restaurant near hotel)",
+    "point7": "Return to hotel and rest"
+  },
+
+  "abu-dhabi-day2-new": {
+    "point1": "Breakfast at the hotel",
+    "point2": "Head to Warner Bros World",
+    "point3": "Lunch inside the park",
+    "point4": "Continue to Ferrari World",
+    "point5": "Light souvenir shopping",
+    "point6": "Dinner",
+    "point7": "Return to hotel"
+  },
+
+  "abu-dhabi-day3-new": {
+    "point1": "Breakfast at the hotel",
+    "point2": "Full day at Yas Waterworld",
+    "point3": "Lunch inside the waterpark area",
+    "point4": "Shopping and relaxing at Yas Mall",
+    "point5": "Dinner at the mall or nearby restaurant",
+    "point6": "Return to hotel and rest"
+  },
+
+  "abu-dhabi-day4-new": {
+    "point1": "Breakfast at the hotel and check-out",
+    "point2": "Light activities (depending on flight time)",
+    "point3": "Souvenir shopping, etc.",
+    "point4": "Transfer to Abu Dhabi Airport",
+    "point5": "Return flight to home country"
+  },
+
   "adu-dhabi-subtitle-2": "Destinasi Eksklusif: Inilah Keindahan yang Menanti",
-  "abu-dhabi-footer-desc": "Kami Akan Memberikan Rekomendasi Terbaik untuk Setiap Paket yang Anda Butuhkan."
+  "abu-dhabi-footer-desc": "Kami Akan Memberikan Rekomendasi Terbaik untuk Setiap Paket yang Anda Butuhkan.",
+  "abu-dhabi-subtitle-destination": "Abu Dhabi menyambut Anda dengan tradisi yang hangat dan pemandangan yang luar biasa."
 }

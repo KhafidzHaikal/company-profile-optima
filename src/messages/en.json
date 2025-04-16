@@ -8,7 +8,7 @@
   "portfolio": "Portfolio",
   "destination": "Destination",
   "social-media": "Our Social Media",
-  "see-more": "Lihat Lebih Banyak",
+  "see-more": "See More",
   "learn-more": "Learn More",
   "person": "Person",
   "jumbotron-text-1": "An Unforgettable Adventure Begins Here",
@@ -17,12 +17,26 @@
   "jumbotron-text-button": "Get in Touch",
   "title-menu-homepage": "Special Packages for You",
   "subtitle-menu-homepage": "Discover tailor made travel packages that combine comfort, adventure, and value, designed to turn your dream journey into reality.",
-  "text-card-package": "Abu Dhabi City Tour Package",
-  "price-1": "$ 602.59",
-  "text-card-description": "Sightseeing tour of famous landmarks such as Sheikh Zayed Grand Mosque, Louvre Abu Dhabi, and Qasr Al Watan.",
-  "text-button-card" : "See Detail",
+  "text-button-card": "See Detail",
+
+  "text-card-package-1": "City Tour Landmark Dubai",
+  "price-1": "USD 490",
+  "text-card-description-1": "Enjoy a Dubai City Tour with visits to Burj Khalifa and more.",
+
+  "text-card-package-2": "Family Fun Dubai",
+  "price-2": "USD 1.880",
+  "text-card-description-2": "Enjoy a Family Vacation on a Fun Trip in Dubai.",
+
+  "text-card-package-3": "Abu Dhabi Heritage & City Tour (3 Days + 2 Nights)",
+  "price-3": "USD 410",
+  "text-card-description-3": "Enjoy a Trip to Abu Dhabi for an Outstanding Experience.",
+
+  "text-card-package-4": "Family Fun Abu Dhabi (4 Days + 3 Nights)",
+  "price-4": "USD 825",
+  "text-card-description-4": "EEnjoy a Family Vacation on a Fun Trip in Abu Dhabi.",
+
   "title-menu-bottom": "Inspiring Travel Moments",
-  "subtitle-menu-bottom": "Jelajahi galeri perjalanan kami dan temukan inspirasi untuk destinasi impian Anda.",
+  "subtitle-menu-bottom": "Explore our travel gallery and find inspiration for your dream destination.",
   "title-menu-next-bottom": "Choose Your Destination",
   "subtitle-menu-next-bottom": "Choose your desired travel destination based on the services we provide.",
   "title-menu-next-call": "We’re Here for You Let’s Make Your Travel Plans Effortles",
@@ -55,13 +69,148 @@
   "dubai-footer-desc": "You can Consultation with Us for More Information.",
   "abu-dhabi-subtitle": "Iconic Exploration in one day sightseeing tour of famous landmarks such as Sheikh Zayed Grand Mosque, Louvre Abu Dhabi, and Qasr Al Watan.",
   "abu-dhabi-subtitle-1": "What will you get?",
-  "abu-dhabi-point-1": "Iconic exploration in one day",
-  "abu-dhabi-point-2": "Visit to Sheikh Zayed Grand Mosque",
-  "abu-dhabi-point-3": "Exploration of Louvre Abu Dhabi or Qasr Al Watan",
-  "abu-dhabi-point-4": "Photos of Emirates Palace dan Corniche Beach",
-  "abu-dhabi-point-5": "Lunch at a local restaurant",
-  "abu-dhabi-point-6": "Private transportation + English/Indonesian speaking tour guide",
-  "adu-dhabi-subtitle-2": "Exclusive Destinations: Here's the Beauty that awaits",
-  "abu-dhabi-footer-desc": "We will Give You The Best Recommendation for Every Package You Need."
 
+  "dubai-itinerary-title": "Dubai Tour Itinerary",
+  "dubai-day1": {
+    "point1": "Arrival in Dubai – greeted by travel staff at the airport",
+    "point2": "Private transfer to the hotel",
+    "point3": "Check-in at 4-star hotel (e.g. Rove Downtown, ibis One Central)",
+    "point4": "Short briefing on itinerary by travel representative",
+    "point5": "Optional dinner arranged by travel (halal restaurant near hotel)"
+  },
+  "dubai-day2": {
+    "point1": "Breakfast at the hotel",
+    "point2": "Picked up by official guide for Dubai City Tour",
+    "point3": "Morning to afternoon destinations with history & photo stops: Jumeirah Mosque, Burj Al Arab (Umm Suqeim Beach), The Pointe at Palm Jumeirah, Souk Madinat Jumeirah, Dubai Marina Walk",
+    "point4": "Burj Khalifa At The Top + Dubai Fountain Show",
+    "point5": "Desert Safari & Camel Ride",
+    "point6": "Dinner and return to hotel"
+  },
+  "dubai-day3": {
+    "point1": "Breakfast at the hotel",
+    "point2": "Free time for optional activities: Museum of the Future or shopping (assisted by agent)",
+    "point3": "Hotel check-out and transfer to the airport"
+  },
+
+  "term-and-condition-title": "Terms & Conditions",
+  "term-and-condition": {
+    "point1": "Flight tickets and visa are not included",
+    "point2": "The registration deposit is non-refundable",
+    "point3": "International airport tax, fuel surcharge, visa fees, and personal travel insurance are subject to change and will be adjusted to participants before departure.",
+    "point4": "If there is an exhibition/conference or the hotel is fully booked in the destination cities, an equivalent hotel in a nearby city will be arranged",
+    "point5": "In the case of Force Majeure (conditions beyond control such as loss, damage, disruption, transportation delays, natural disasters, etc.), the tour program may be altered and is non-refundable. Tour cost does not include any additional expenses caused by Force Majeure",
+    "point6": "If guests wish to change flight schedule or extend (deviation), fees will apply according to airline policy"
+  },
+
+  "dubai-new-itinerary-title": "Dubai Family Itinerary",
+  "dubai-new-day1": {
+    "point1": "Arrival in Dubai (Morning/Afternoon)",
+    "point2": "Pick-up by travel staff at the airport",
+    "point3": "Private transfer to hotel",
+    "point4": "Check-in at 4-star hotel (e.g., Rove Downtown, ibis One Central)",
+    "point5": "Evening walk to Dubai Miracle Garden",
+    "point6": "Briefing session by travel representative",
+    "point7": "Dinner: Arranged by travel (halal restaurant near hotel)"
+  },
+  "dubai-new-day2": {
+    "point1": "Breakfast at hotel",
+    "point2": "Full day at Legoland Dubai or Motiongate",
+    "point3": "Round-trip transfer to Dubai Parks & Resorts",
+    "point4": "Return to hotel"
+  },
+  "dubai-new-day3": {
+    "point1": "Breakfast at hotel",
+    "point2": "Morning–Afternoon: Visit destinations with history and photo stops",
+    "point3": "Jumeirah Mosque (photo stop)",
+    "point4": "Burj Al Arab (photo stop at Umm Suqeim Beach)",
+    "point5": "The Pointe, Palm Jumeirah (view of Atlantis The Palm)",
+    "point6": "Souk Madinat Jumeirah – luxury traditional market vibes",
+    "point7": "Dubai Marina Walk – leisure walk or coffee break"
+  },
+  "dubai-new-day4": {
+    "point1": "Breakfast and check-out",
+    "point2": "Souvenir shopping at Karama Market / Deira",
+    "point3": "Transfer to airport (drop-off by travel team)"
+  },
+
+  "abu-dhabi-itinerary-title": "Abu Dhabi Itinerary",
+
+  "abu-dhabi-day1": {
+    "point1": "Arrival in Dubai (Morning/Afternoon)",
+    "point2": "Pick-up by travel staff at the airport",
+    "point3": "Private transfer to hotel",
+    "point4": "Hotel check-in (4-star, e.g., Rove Downtown, ibis One Central)",
+    "point5": "Evening visit to Dubai Miracle Garden",
+    "point6": "Short itinerary briefing by travel representative",
+    "point7": "Dinner: Arranged by travel (halal restaurant near hotel)"
+  },
+
+  "abu-dhabi-day2": {
+    "point1": "Breakfast at hotel",
+    "point2": "Full day at Legoland Dubai or Motiongate",
+    "point3": "Roundtrip transfer to Dubai Parks & Resort",
+    "point4": "Return to hotel"
+  },
+
+  "abu-dhabi-day3": {
+    "point1": "Breakfast at hotel",
+    "point2": "Morning - Noon: Destinations visited (with history & photo spots)",
+    "point3": "Jumeirah Mosque (photo stop)",
+    "point4": "Burj Al Arab (photo stop at Umm Suqeim beach)",
+    "point5": "The Pointe, Palm Jumeirah (view of Atlantis The Palm)",
+    "point6": "Souk Madinat Jumeirah – luxury traditional market vibes",
+    "point7": "Dubai Marina Walk – free walk or coffee break",
+    "point8": "Afternoon: Visit to Dubai Aquarium & Underwater Zoo",
+    "point9": "Evening: Visit to Global Village, return to hotel"
+  },
+
+  "abu-dhabi-day4": {
+    "point1": "Breakfast and check-out",
+    "point2": "Souvenir shopping at Karama Market/Deira",
+    "point3": "Transfer to airport (drop-off by travel team)"
+  },
+
+  "abu-dhabi-itinerary-title": "Abu Dhabi Itinerary",
+
+  "abu-dhabi-day1-new": {
+    "point1": "Arrival in Abu Dhabi (Morning/Afternoon)",
+    "point2": "Pick-up by travel staff at the airport",
+    "point3": "Private transfer to hotel & check-in at 4-star hotel with short rest",
+    "point4": "Visit to Sheikh Zayed Grand Mosque",
+    "point5": "Photo stop at Emirates Palace & Corniche",
+    "point6": "Dinner: Arranged by travel (local halal restaurant near hotel)",
+    "point7": "Return to hotel and rest"
+  },
+
+  "abu-dhabi-day2-new": {
+    "point1": "Breakfast at the hotel",
+    "point2": "Head to Warner Bros World",
+    "point3": "Lunch inside the park",
+    "point4": "Continue to Ferrari World",
+    "point5": "Light souvenir shopping",
+    "point6": "Dinner",
+    "point7": "Return to hotel"
+  },
+
+  "abu-dhabi-day3-new": {
+    "point1": "Breakfast at the hotel",
+    "point2": "Full day at Yas Waterworld",
+    "point3": "Lunch inside the waterpark area",
+    "point4": "Shopping and relaxing at Yas Mall",
+    "point5": "Dinner at the mall or nearby restaurant",
+    "point6": "Return to hotel and rest"
+  },
+
+  "abu-dhabi-day4-new": {
+    "point1": "Breakfast at the hotel and check-out",
+    "point2": "Light activities (depending on flight time)",
+    "point3": "Souvenir shopping, etc.",
+    "point4": "Transfer to Abu Dhabi Airport",
+    "point5": "Return flight to home country"
+  },
+
+
+  "adu-dhabi-subtitle-2": "Exclusive Destinations: Here's the Beauty that awaits",
+  "abu-dhabi-footer-desc": "We will Give You The Best Recommendation for Every Package You Need.",
+  "abu-dhabi-subtitle-destination": "Abu Dhabi welcomes you with warm traditions and incredible sights."
 }

@@ -27,29 +27,32 @@ export default async function Home({ params }: Props) {
 		<main className="mt-12 lg:mt-0">
 			<Navbar />
 
-			<section
-				className="h-screen flex items-center container mt-2 sm:mt-0"
-				style={{
-					backgroundImage: "url(/images/jumbotron-optima-baru.png)",
-					width: "100%",
-					backgroundSize: "cover",
-					backgroundPosition: "center",
-				}}>
-				<div className="container">
-					<h1
-						className={`text-[22px] sm:text-[32px] lg:text-[40px] font-bold mx-12 lg:mx-32 text-white`}>
+			<section className="relative h-screen flex items-center mt-2 sm:mt-0 overflow-hidden">
+				{/* Background Video */}
+				<video
+					autoPlay
+					muted
+					loop
+					playsInline
+					className="absolute top-0 left-0 w-full h-full object-cover z-0 brightness-[50%]">
+					<source src="/videos/dubai.mp4" type="video/mp4" />
+					Your browser does not support the video tag.
+				</video>
+
+				{/* Foreground Content */}
+				<div className="relative z-10 container">
+					<h1 className="text-[22px] sm:text-[32px] lg:text-[40px] font-bold mx-12 lg:mx-32 text-white">
 						{t("jumbotron-text-1")}
 					</h1>
-					<h1
-						className={`text-[22px] sm:text-[32px] lg:text-[40px] font-bold mx-12 lg:mx-32 text-white`}>
+					<h1 className="text-[22px] sm:text-[32px] lg:text-[40px] font-bold mx-12 lg:mx-32 text-white">
 						{t("jumbotron-text-2")}
 					</h1>
 					<p className="md:w-1/2 text-sm md:text-base mx-12 lg:mx-32 mt-4 text-white">
 						{t("jumbotron-text-desc")}
 					</p>
 					<div className="mx-12 lg:mx-32 mt-4">
-						<Link href={"https://wa.me/+6281911506190"}>
-							<Button className=" rounded-md py-4 flex items-center gap-2 text-black bg-[#F3C623] hover:bg-[#f5d666] cursor-pointer">
+						<Link href={"#"}>
+							<Button className="rounded-md py-4 flex items-center gap-2 text-black bg-[#F3C623] hover:bg-[#f5d666] cursor-pointer">
 								{t("jumbotron-text-button")}
 								<FaWhatsapp className="text-md" />
 							</Button>
@@ -57,6 +60,7 @@ export default async function Home({ params }: Props) {
 					</div>
 				</div>
 			</section>
+
 			<section className="py-12 mx-12 lg:mx-32">
 				<p className="text-2xl text-yellow-400">{t("title-menu-homepage")}</p>
 				<p className="text-md my-4">{t("subtitle-menu-homepage")}</p>
@@ -65,7 +69,7 @@ export default async function Home({ params }: Props) {
 						<CarouselItem className="sm:basis-1/2 md:basis-1/3 xl:basis-1/4 dark:bg-white shadow-md rounded-md ml-2.5 sm:ml-4 p-0">
 							<div className="h-full">
 								<Image
-									src={"/images/mosque.png"}
+									src={"/images/optima-foto-5.png"}
 									width={0}
 									height={0}
 									sizes="100vh"
@@ -74,16 +78,16 @@ export default async function Home({ params }: Props) {
 								/>
 								<div className="p-4">
 									<p className="text-md font-semibold text-black">
-										{t("text-card-package")}
+										{t("text-card-package-1")}
 									</p>
 									<p className="text-black my-2 text-sm">
 										<span className="text-md font-semibold">
 											{t("price-1")}
 										</span>{" "}
-										/ {t("person")}
+										/ pax
 									</p>
-									<p className="text-sm font-normal text-black">
-										{t("text-card-description")}
+									<p className="text-sm font-normal text-black py-4">
+										{t("text-card-description-1")}
 									</p>
 									<div className="flex md:block xl:flex justify-between items-center mt-8 gap-2">
 										<Link href={""}>
@@ -92,7 +96,7 @@ export default async function Home({ params }: Props) {
 												<FaWhatsapp className="text-md" />
 											</Button>
 										</Link>
-										<Link href={""}>
+										<Link href={"/package/dubai-1"}>
 											<Button className="mt-0 md:mt-4 xl:mt-0 rounded-md py-4 flex items-center gap-2 mx-auto sm:mx-0 text-black bg-[#F3C623] hover:bg-[#f5d666] cursor-pointer w-full">
 												{t("text-button-card")}
 												<IoArrowRedoOutline className="text-md" />
@@ -105,7 +109,7 @@ export default async function Home({ params }: Props) {
 						<CarouselItem className="sm:basis-1/2 md:basis-1/3 xl:basis-1/4 dark:bg-white shadow-md rounded-md ml-2.5 sm:ml-4 p-0">
 							<div className="h-full">
 								<Image
-									src={"/images/mosque.png"}
+									src={"/images/dubai-poto.png"}
 									width={0}
 									height={0}
 									sizes="100vh"
@@ -114,16 +118,16 @@ export default async function Home({ params }: Props) {
 								/>
 								<div className="p-4">
 									<p className="text-md font-semibold text-black">
-										{t("text-card-package")}
+										{t("text-card-package-2")}
 									</p>
 									<p className="text-black my-2 text-sm">
 										<span className="text-md font-semibold">
-											{t("price-1")}
+											{t("price-2")}
 										</span>{" "}
-										/ {t("person")}
+										/ pax
 									</p>
-									<p className="text-sm font-normal text-black">
-										{t("text-card-description")}
+									<p className="text-sm font-normal text-black py-4">
+										{t("text-card-description-2")}
 									</p>
 									<div className="flex md:block xl:flex justify-between items-center mt-8 gap-2">
 										<Link href={""}>
@@ -132,7 +136,7 @@ export default async function Home({ params }: Props) {
 												<FaWhatsapp className="text-md" />
 											</Button>
 										</Link>
-										<Link href={""}>
+										<Link href={"/package/dubai-2"}>
 											<Button className="mt-0 md:mt-4 xl:mt-0 rounded-md py-4 flex items-center gap-2 mx-auto sm:mx-0 text-black bg-[#F3C623] hover:bg-[#f5d666] cursor-pointer w-full">
 												{t("text-button-card")}
 												<IoArrowRedoOutline className="text-md" />
@@ -145,7 +149,7 @@ export default async function Home({ params }: Props) {
 						<CarouselItem className="sm:basis-1/2 md:basis-1/3 xl:basis-1/4 dark:bg-white shadow-md rounded-md ml-2.5 sm:ml-4 p-0">
 							<div className="h-full">
 								<Image
-									src={"/images/mosque.png"}
+									src={"/images/optima-foto-8.png"}
 									width={0}
 									height={0}
 									sizes="100vh"
@@ -154,16 +158,16 @@ export default async function Home({ params }: Props) {
 								/>
 								<div className="p-4">
 									<p className="text-md font-semibold text-black">
-										{t("text-card-package")}
+										{t("text-card-package-3")}
 									</p>
 									<p className="text-black my-2 text-sm">
 										<span className="text-md font-semibold">
-											{t("price-1")}
+											{t("price-3")}
 										</span>{" "}
-										/ {t("person")}
+										/ pax
 									</p>
-									<p className="text-sm font-normal text-black">
-										{t("text-card-description")}
+									<p className="text-sm font-normal text-black py-1">
+										{t("text-card-description-3")}
 									</p>
 									<div className="flex md:block xl:flex justify-between items-center mt-8 gap-2">
 										<Link href={""}>
@@ -172,7 +176,7 @@ export default async function Home({ params }: Props) {
 												<FaWhatsapp className="text-md" />
 											</Button>
 										</Link>
-										<Link href={""}>
+										<Link href={"/package/abu-dhabi-1"}>
 											<Button className="mt-0 md:mt-4 xl:mt-0 rounded-md py-4 flex items-center gap-2 mx-auto sm:mx-0 text-black bg-[#F3C623] hover:bg-[#f5d666] cursor-pointer w-full">
 												{t("text-button-card")}
 												<IoArrowRedoOutline className="text-md" />
@@ -185,7 +189,7 @@ export default async function Home({ params }: Props) {
 						<CarouselItem className="sm:basis-1/2 md:basis-1/3 xl:basis-1/4 dark:bg-white shadow-md rounded-md ml-2.5 sm:ml-4 p-0">
 							<div className="h-full">
 								<Image
-									src={"/images/mosque.png"}
+									src={"/images/optima-foto-11.png"}
 									width={0}
 									height={0}
 									sizes="100vh"
@@ -194,16 +198,16 @@ export default async function Home({ params }: Props) {
 								/>
 								<div className="p-4">
 									<p className="text-md font-semibold text-black">
-										{t("text-card-package")}
+										{t("text-card-package-4")}
 									</p>
 									<p className="text-black my-2 text-sm">
 										<span className="text-md font-semibold">
-											{t("price-1")}
+											{t("price-4")}
 										</span>{" "}
-										/ {t("person")}
+										/ pax
 									</p>
-									<p className="text-sm font-normal text-black">
-										{t("text-card-description")}
+									<p className="text-sm font-normal text-black py-1">
+										{t("text-card-description-4")}
 									</p>
 									<div className="flex md:block xl:flex justify-between items-center mt-8 gap-2">
 										<Link href={""}>
@@ -212,7 +216,7 @@ export default async function Home({ params }: Props) {
 												<FaWhatsapp className="text-md" />
 											</Button>
 										</Link>
-										<Link href={""}>
+										<Link href={"/package/abu-dhabi-2"}>
 											<Button className="mt-0 md:mt-4 xl:mt-0 rounded-md py-4 flex items-center gap-2 mx-auto sm:mx-0 text-black bg-[#F3C623] hover:bg-[#f5d666] cursor-pointer w-full">
 												{t("text-button-card")}
 												<IoArrowRedoOutline className="text-md" />
@@ -319,9 +323,11 @@ export default async function Home({ params }: Props) {
 							className="rounded-xl object-fit hover:scale-110 duration-500 transition-transform w-[600px] h-[200px] sm:h-[400px]"
 						/>
 						<div className="absolute inset-0 flex items-center justify-center">
-							<span className="bg-black/50 text-white px-4 py-2 rounded-md flex items-center gap-2 font-semibold text-sm lg:text-lg group-hover:bg-black/70 transition-colors duration-300">
-								Abu Dhabi <IoArrowRedoOutline size={16} />
-							</span>
+							<Link href={"/destination/abu-dhabi"}>
+								<span className="bg-black/50 text-white px-4 py-2 rounded-md flex items-center gap-2 font-semibold text-sm lg:text-lg group-hover:bg-black/70 transition-colors duration-300">
+									Abu Dhabi <IoArrowRedoOutline size={16} />
+								</span>
+							</Link>
 						</div>
 					</div>
 
@@ -336,9 +342,11 @@ export default async function Home({ params }: Props) {
 							className="rounded-xl object-cover hover:scale-110 duration-500 transition-transform w-[600px] h-[200px] sm:h-[400px]"
 						/>
 						<div className="absolute inset-0 flex items-center justify-center">
-							<span className="bg-black/50 text-white px-4 py-2 rounded-md flex items-center gap-2 font-semibold text-sm lg:text-lg group-hover:bg-black/70 transition-colors duration-300">
-								Dubai <IoArrowRedoOutline size={16} />
-							</span>
+							<Link href={"/destination/dubai"}>
+								<span className="bg-black/50 text-white px-4 py-2 rounded-md flex items-center gap-2 font-semibold text-sm lg:text-lg group-hover:bg-black/70 transition-colors duration-300">
+									Dubai <IoArrowRedoOutline size={16} />
+								</span>
+							</Link>
 						</div>
 					</div>
 				</div>

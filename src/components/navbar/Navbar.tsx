@@ -19,9 +19,14 @@ import { cn } from "@/lib/utils";
 
 const components: { title: string; href: string; description: string }[] = [
 	{
-		title: "Destination",
-		href: "/destination",
-		description: "Destination",
+		title: "Abu Dhabi",
+		href: "/destination/abu-dhabi",
+		description: "Abu Dhabi Tourism",
+	},
+	{
+		title: "Dubai",
+		href: "/destination/dubai",
+		description: "Dubai Tourism",
 	},
 ];
 
@@ -31,7 +36,7 @@ const Navbar = () => {
 	return (
 		<>
 			{/* Mobile Navbar */}
-			<nav className="flex fixed w-full top-0 bg-background/70 backdrop-blur-sm shadow-sm items-center justify-between p-4 lg:hidden">
+			<nav className="flex z-50 fixed w-full top-0 bg-background/70 backdrop-blur-sm shadow-sm items-center justify-between p-4 lg:hidden">
 				<Link href="/" aria-label="Optima Logo">
 					<Image
 						src="/images/logo.png"

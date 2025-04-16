@@ -19,6 +19,7 @@ export default function middleware(request: NextRequest) {
     pathname.startsWith("/static") ||
     pathname.startsWith("/images") ||
     pathname.startsWith("/uploads") ||
+    pathname.startsWith("/videos") ||
     pathname.startsWith("/login-admin-optima") ||
     pathname.startsWith("/register-just-admin") ||
     pathname.startsWith("/dashboard") ||
