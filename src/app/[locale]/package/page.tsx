@@ -27,7 +27,7 @@ export default async function PackagePage({ params }: Props) {
 				</p>
 				<p className="text-md mt-8 mb-12">{t("package-subtitle")}</p>
 				<p className="text-xl font-bold text-yellow-400 my-4">Dubai</p>
-				<div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
+				<div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-4">
 					<div className="h-full dark:bg-white shadow-md rounded-md ml-2.5 sm:ml-4 p-0">
 						<Image
 							src={"/images/optima-foto-5.png"}
@@ -102,7 +102,7 @@ export default async function PackagePage({ params }: Props) {
 					</div>
 				</div>
 				<p className="text-xl font-bold text-yellow-400 my-4">Abu Dhabi</p>
-				<div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
+				<div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-4">
 					<div className="h-full dark:bg-white shadow-md rounded-md ml-2.5 sm:ml-4 p-0">
 						<Image
 							src={"/images/optima-foto-8.png"}
