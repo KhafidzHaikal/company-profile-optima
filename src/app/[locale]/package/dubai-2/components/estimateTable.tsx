@@ -20,7 +20,7 @@ export default function NewDubaiPriceTable() {
 					</tr>
 				</thead>
 				<tbody className="text-white text-sm font-light">
-					<tr className="bg-neutral-900 hover:bg-neutral-800 transition rounded-md">
+					<tr className="transition rounded-md">
 						<td className="px-3 py-3 align-top">1</td>
 						<td className="px-3 py-3 align-top font-medium">
 							{t("accommodation")}
@@ -31,25 +31,25 @@ export default function NewDubaiPriceTable() {
 						</td>
 						<td className="px-3 py-3 text-right">USD 330</td>
 					</tr>
-					<tr className="bg-neutral-900 hover:bg-neutral-800 transition rounded-md">
+					<tr className="transition rounded-md">
 						<td className="px-3 py-3 align-top">2</td>
 						<td className="px-3 py-3 font-medium">{t("transportation")}</td>
 						<td className="px-3 py-3">{t("transportationDetail")}</td>
 						<td className="px-3 py-3 text-right">USD 430</td>
 					</tr>
-					<tr className="bg-neutral-900 hover:bg-neutral-800 transition rounded-md">
+					<tr className="transition rounded-md">
 						<td className="px-3 py-3 align-top">3</td>
 						<td className="px-3 py-3 font-medium">{t("tickets")}</td>
 						<td className="px-3 py-3">{t("ticketDetail")}</td>
 						<td className="px-3 py-3 text-right">USD 550</td>
 					</tr>
-					<tr className="bg-neutral-900 hover:bg-neutral-800 transition rounded-md">
+					<tr className="transition rounded-md">
 						<td className="px-3 py-3 align-top">4</td>
 						<td className="px-3 py-3 font-medium">{t("guideHandling")}</td>
 						<td className="px-3 py-3">{t("guideDetail")}</td>
 						<td className="px-3 py-3 text-right">USD 80</td>
 					</tr>
-					<tr className="bg-neutral-900 hover:bg-neutral-800 transition rounded-md">
+					<tr className="transition rounded-md">
 						<td className="px-3 py-3 align-top">5</td>
 						<td className="px-3 py-3 font-medium">{t("markup")}</td>
 						<td className="px-3 py-3">{t("markupDetail")}</td>

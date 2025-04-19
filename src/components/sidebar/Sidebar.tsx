@@ -68,6 +68,11 @@ export function HumburgerButton() {
               <DropdownMenuContent side="right" className="w-56">
                 <DropdownMenuSeparator />
                 <DropdownMenuItem asChild>
+                  <Link href="/destination" className="w-full px-2 py-1 text-sm">
+                    Destination
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
                   <Link href="/destination/abu-dhabi" className="w-full px-2 py-1 text-sm">
                     Abu Dhabi
                   </Link>

@@ -19,6 +19,11 @@ import { cn } from "@/lib/utils";
 
 const components: { title: string; href: string; description: string }[] = [
 	{
+		title: "Destination Page",
+		href: "/destination",
+		description: "Destination",
+	},
+	{
 		title: "Abu Dhabi",
 		href: "/destination/abu-dhabi",
 		description: "Abu Dhabi Tourism",

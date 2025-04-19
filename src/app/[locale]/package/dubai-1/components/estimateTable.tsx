@@ -20,7 +20,7 @@ export default function EstimatedPriceTable() {
 					</tr>
 				</thead>
 				<tbody className="text-white text-sm font-light">
-					<tr className="bg-neutral-900 hover:bg-neutral-800 transition rounded-md">
+					<tr className="transition rounded-md">
 						<td className="px-3 py-3 align-top">1</td>
 						<td className="px-3 py-3 align-top font-medium">
 							{t("accommodation")}
@@ -40,7 +40,7 @@ export default function EstimatedPriceTable() {
 							<br />+ USD 50
 						</td>
 					</tr>
-					<tr className="bg-neutral-900 hover:bg-neutral-800 transition rounded-md">
+					<tr className="transition rounded-md">
 						<td className="px-3 py-3 align-top">2</td>
 						<td className="px-3 py-3 font-medium">
 							{t("transportationGuide")}
@@ -48,19 +48,19 @@ export default function EstimatedPriceTable() {
 						<td className="px-3 py-3">{t("transportationDetail")}</td>
 						<td className="px-3 py-3 text-right">USD 120</td>
 					</tr>
-					<tr className="bg-neutral-900 hover:bg-neutral-800 transition rounded-md">
+					<tr className="transition rounded-md">
 						<td className="px-3 py-3 align-top">3</td>
 						<td className="px-3 py-3 font-medium">{t("excursionTickets")}</td>
 						<td className="px-3 py-3">{t("excursionDetail")}</td>
 						<td className="px-3 py-3 text-right">USD 150</td>
 					</tr>
-					<tr className="bg-neutral-900 hover:bg-neutral-800 transition rounded-md">
+					<tr className="transition rounded-md">
 						<td className="px-3 py-3 align-top">4</td>
 						<td className="px-3 py-3 font-medium">{t("meals")}</td>
 						<td className="px-3 py-3">{t("mealsDetail")}</td>
 						<td className="px-3 py-3 text-right">USD 30</td>
 					</tr>
-					<tr className="bg-neutral-900 hover:bg-neutral-800 transition rounded-md">
+					<tr className="transition rounded-md">
 						<td className="px-3 py-3 align-top">5</td>
 						<td className="px-3 py-3 font-medium">{t("travelFee")}</td>
 						<td className="px-3 py-3">{t("travelDetail")}</td>

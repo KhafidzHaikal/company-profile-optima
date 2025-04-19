@@ -35,7 +35,7 @@ export default async function DestinationPage({ params }: Props) {
 					title="Abu Dhabi"
 					description={t("destination-card-title-abu-dhabi")}
 					imageUrl="/images/destination-poto-abu-dhabi.png"
-					link={`/${locale}/package`}
+					link={`/${locale}/destination/abu-dhabi`}
 				/>
 			</section>
 			<Footer />
