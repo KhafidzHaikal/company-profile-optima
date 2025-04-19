@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { FaWhatsapp } from "react-icons/fa";
+import DubaiTabsFull from "./components/itenarary";
 
 type Props = {
 	params?: Promise<{ locale: string }>;
@@ -36,53 +37,7 @@ export default async function Dubai2Page({ params }: Props) {
 						<FaWhatsapp className="text-md" />
 					</Button>
 				</Link>
-				<div className="mt-12">
-					<p className="text-2xl font-bold text-yellow-400">
-						{t("dubai-new-itinerary-title")}
-					</p>
-
-					{/* Day 1 */}
-					<p className="text-xl font-bold text-yellow-400 mt-4">Day 1</p>
-					<ul className="list-disc list-inside dark:text-white text-black space-y-2 ml-4 lg:ml-12 mt-2 text-sm">
-						<li>{t("dubai-new-day1.point1")}</li>
-						<li>{t("dubai-new-day1.point2")}</li>
-						<li>{t("dubai-new-day1.point3")}</li>
-						<li>{t("dubai-new-day1.point4")}</li>
-						<li>{t("dubai-new-day1.point5")}</li>
-						<li>{t("dubai-new-day1.point6")}</li>
-						<li>{t("dubai-new-day1.point7")}</li>
-					</ul>
-
-					{/* Day 2 */}
-					<p className="text-xl font-bold text-yellow-400 mt-6">Day 2</p>
-					<ul className="list-disc list-inside dark:text-white text-black space-y-2 ml-4 lg:ml-12 mt-2 text-sm">
-						<li>{t("dubai-new-day2.point1")}</li>
-						<li>{t("dubai-new-day2.point2")}</li>
-						<li>{t("dubai-new-day2.point3")}</li>
-						<li>{t("dubai-new-day2.point4")}</li>
-					</ul>
-
-					{/* Day 3 */}
-					<p className="text-xl font-bold text-yellow-400 mt-6">Day 3</p>
-					<ul className="list-disc list-inside dark:text-white text-black space-y-2 ml-4 lg:ml-12 mt-2 text-sm">
-						<li>{t("dubai-new-day3.point1")}</li>
-						<li>{t("dubai-new-day3.point2")}</li>
-						<li>{t("dubai-new-day3.point3")}</li>
-						<li>{t("dubai-new-day3.point4")}</li>
-						<li>{t("dubai-new-day3.point5")}</li>
-						<li>{t("dubai-new-day3.point6")}</li>
-						<li>{t("dubai-new-day3.point7")}</li>
-					</ul>
-
-					{/* Day 4 */}
-					<p className="text-xl font-bold text-yellow-400 mt-6">Day 4</p>
-					<ul className="list-disc list-inside dark:text-white text-black space-y-2 ml-4 lg:ml-12 mt-2 text-sm">
-						<li>{t("dubai-new-day4.point1")}</li>
-						<li>{t("dubai-new-day4.point2")}</li>
-						<li>{t("dubai-new-day4.point3")}</li>
-					</ul>
-				</div>
-
+				<DubaiTabsFull />
 				<div className="mt-12">
 					<p className="text-2xl font-bold text-yellow-400">
 						{t("adu-dhabi-subtitle-2")}
@@ -133,19 +88,6 @@ export default async function Dubai2Page({ params }: Props) {
 						height={100}
 						className="w-full rounded-lg object-cover"
 					/>
-				</div>
-				<div className="mt-8">
-					<p className="text-xl font-bold text-yellow-400 mb-2">
-						{t("term-and-condition-title")}
-					</p>
-					<ul className="list-disc list-inside dark:text-white text-black space-y-2 ml-4 lg:ml-8 text-md">
-						<li>{t("term-and-condition.point1")}</li>
-						<li>{t("term-and-condition.point2")}</li>
-						<li>{t("term-and-condition.point3")}</li>
-						<li>{t("term-and-condition.point4")}</li>
-						<li>{t("term-and-condition.point5")}</li>
-						<li>{t("term-and-condition.point6")}</li>
-					</ul>
 				</div>
 			</section>
 			<section

@@ -58,6 +58,11 @@
   "abu-dhabi-subtitle": "Penjelajahan Ikonik dalam tur wisata satu hari ke landmark terkenal seperti Masjid Agung Sheikh Zayed, Louvre Abu Dhabi, dan Qasr Al Watan.",
   "abu-dhabi-subtitle-1": "Apa yang akan Anda dapatkan?",
 
+  "tabs": {
+    "detail-package": "Detail Package",
+    "term-condition": "Term & Condition"
+  },
+
   "dubai-itinerary-title": "Itinerary Wisata Dubai",
   "dubai-day1": {
     "point1": "Kedatangan di Dubai – dijemput staf travel di bandara",
@@ -81,6 +86,7 @@
   },
 
   "term-and-condition-title": "Syarat & Ketentuan",
+  "term-and-condition-description": "Dengan membayar uang muka biaya tur, Anda dianggap telah memahami dan menyetujui syarat & ketentuan di atas.",
   "term-and-condition": {
     "point1": "Belum termasuk tiket pesawat dan Visa",
     "point2": "Uang muka pendaftaran tidak dapat dikembalikan",
@@ -120,8 +126,6 @@
     "point2": "Belanja oleh-oleh di Karama Market / Deira",
     "point3": "Transfer ke Bandara (diantar oleh tim travel)"
   },
-
-  "abu-dhabi-itinerary-title": "Itinerary Abu Dhabi",
 
   "abu-dhabi-day1": {
     "point1": "Kedatangan di Dubai (Pagi/Siang)",
@@ -199,5 +203,99 @@
 
   "adu-dhabi-subtitle-2": "Destinasi Eksklusif: Inilah Keindahan yang Menanti",
   "abu-dhabi-footer-desc": "Kami Akan Memberikan Rekomendasi Terbaik untuk Setiap Paket yang Anda Butuhkan.",
-  "abu-dhabi-subtitle-destination": "Abu Dhabi menyambut Anda dengan tradisi yang hangat dan pemandangan yang luar biasa."
+  "abu-dhabi-subtitle-destination": "Abu Dhabi adalah ibu kota Uni Emirat Arab (UEA) dan merupakan kota terbesar kedua setelah Dubai. Terletak di sebuah pulau di Teluk Persia, kota ini dikenal sebagai pusat pemerintahan, budaya, dan ekonomi negara. Abu Dhabi menawarkan perpaduan menarik antara arsitektur modern, kekayaan budaya Islam, dan keindahan alam gurun serta pesisir.",
+  "abu-dhabi-destination": {
+    "title-1": "Masjid Agung Sheikh Zayed",
+    "desc-1": "Masjid terbesar di UEA dan ikon Abu Dhabi. Arsitekturnya yang megah, dengan 82 kubah dan 1.000 pilar marmer, adalah simbol keindahan Islam modern yang terbuka bagi wisatawan dari seluruh dunia.",
+    "title-2": "Qasr Al Watan",
+    "desc-2": "Sebuah istana negara yang dibuka untuk umum. Pengunjung dapat menjelajahi aula-aula megah, perpustakaan kerajaan, dan ruang pertemuan untuk para pemimpin dunia.",
+    "title-3": "Louvre Abu Dhabi",
+    "desc-3": "Museum seni dan budaya kelas dunia yang berkolaborasi dengan Prancis. Museum ini memamerkan karya-karya dari berbagai peradaban, dari zaman kuno hingga modern, dalam bangunan ikonik berbentuk kubah bercahaya.",
+    "title-4": "Wisata Corniche",
+    "desc-4": "Hamparan pantai indah sepanjang 8 km, dengan jalur pejalan kaki, taman, dan pantai umum. Tempat yang tepat untuk bersantai sambil menikmati pemandangan panorama Teluk Arab.",
+    "title-5": "Heritage Village",
+    "desc-5": "Replika desa tradisional Emirati yang menampilkan kehidupan bangsa Arab sebelum era modern. Terdapat kerajinan tangan, museum kecil, dan pemandangan ke laut."
+  },
+
+  "estimation": {
+    "title": "Estimasi",
+    "no": "No",
+    "component": "Komponen",
+    "details": "Rincian",
+    "price": "Harga (USD/pax)",
+    "accommodation": "Akomodasi (2 malam)",
+    "hotelDetail": "Hotel bintang 4 (Rove Downtown / ibis One Central atau setara)",
+    "twinSharing": "Twin Sharing (2 orang/kamar), termasuk sarapan",
+    "singleRoom": "Single Room (opsional), tambah biaya USD 100 untuk single occupancy",
+    "extraBed": "Extra Bed (opsional), tersedia di kamar tertentu tergantung hotel",
+    "transportationGuide": "Transportasi & Guide",
+    "transportationDetail": "Jemput/antar bandara, city tour, desert safari, mobil AC + driver + guide",
+    "excursionTickets": "Tiket Wisata & Aktivitas",
+    "excursionDetail": "Burj Khalifa, Desert Safari (termasuk semua aktivitas & show)",
+    "meals": "Makanan",
+    "mealsDetail": "2x Sarapan (hotel), 1x BBQ Dinner (safari)",
+    "travelFee": "Biaya Travel Handling",
+    "travelDetail": "Biaya administrasi, panduan digital, souvenir kecil, air mineral",
+    "totalEstimation": "Total Estimasi per Pax (Twin Share)"
+  },
+
+  "new-dubai": {
+    "title": "Estimasi Harga Paket New Dubai",
+    "no": "No",
+    "component": "Komponen",
+    "details": "Rincian",
+    "price": "Harga (USD/pax)",
+    "accommodation": "Akomodasi (3 malam)",
+    "hotelDetail": "Hotel bintang 4 (3 malam)",
+    "hotelPriceCalc": "3 x USD 110 = USD 330",
+    "transportation": "Transportasi",
+    "transportationDetail": "Jemput / antar",
+    "tickets": "Tiket Wisata",
+    "ticketDetail": "Lokasi wisata (3 atraksi)",
+    "guideHandling": "Guide, Handling, Tiket Support",
+    "guideDetail": "Biaya pemandu, penanganan, dan tiket lainnya",
+    "markup": "Markup/Koordinasi",
+    "markupDetail": "Agen fee dan lainnya",
+    "total": "Total"
+  },
+
+  "estimation-abu-dhabi": {
+    "title": "Estimasi Harga - Abu Dhabi",
+    "no": "No",
+    "component": "Komponen",
+    "details": "Rincian",
+    "price": "Harga (USD/pax)",
+    "accommodation": "Akomodasi (2 malam)",
+    "hotelDetail": "Hotel bintang 4 (termasuk sarapan)",
+    "transportationGuide": "Transportasi & Guide",
+    "transportationDetail": "Jemput/antar bandara, city tour full-day, mobil private AC + lokal guide",
+    "excursionTickets": "Tiket Wisata & Aktivitas",
+    "excursionDetail": "Sheikh Zayed Grand Mosque, Qasr Al Watan, Heritage Village, Date Market",
+    "meals": "Makanan",
+    "mealsDetail": "2 x makan siang, 2 x makan malam, dan air mineral selama tur",
+    "handling": "Handling & Koordinasi",
+    "handlingDetail": "Tiket masuk, penjadwalan, souvenir kecil, digital itinerary",
+    "totalEstimation": "Total"
+  },
+
+  "estimation-new-abu-dhabi": {
+    "title": "Estimasi Harga - Abu Dhabi Terbaru",
+    "no": "No",
+    "component": "Komponen",
+    "details": "Rincian",
+    "price": "Harga (USD/pax)",
+    "accommodation": "Akomodasi (3 malam)",
+    "hotelDetail": "Hotel bintang 4 (termasuk sarapan)",
+    "transportationGuide": "Transportasi & Guide",
+    "transportationDetail": "Jemput/antar bandara, city tour full-day, mobil private AC + lokal guide",
+    "excursionTickets": "Tiket Wisata & Aktivitas",
+    "excursionDetail": "Ferrari World, Warner Bros, Yas Waterworld, Grand Mosque, Heritage Village",
+    "meals": "Makanan",
+    "mealsDetail": "3 x makan siang, 3 x makan malam, snack anak dan air mineral selama tur",
+    "handling": "Handling & Koordinasi",
+    "handlingDetail": "Tiket masuk, penjadwalan, souvenir kecil, digital itinerary",
+    "totalEstimation": "Total"
+  }
+
+
 }

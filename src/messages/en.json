@@ -69,6 +69,10 @@
   "dubai-footer-desc": "You can Consultation with Us for More Information.",
   "abu-dhabi-subtitle": "Iconic Exploration in one day sightseeing tour of famous landmarks such as Sheikh Zayed Grand Mosque, Louvre Abu Dhabi, and Qasr Al Watan.",
   "abu-dhabi-subtitle-1": "What will you get?",
+  "tabs": {
+    "detail-package": "Detail Package",
+    "term-condition": "Term & Condition"
+  },
 
   "dubai-itinerary-title": "Dubai Tour Itinerary",
   "dubai-day1": {
@@ -93,6 +97,7 @@
   },
 
   "term-and-condition-title": "Terms & Conditions",
+  "term-and-condition-description": "By paying the advance registration of the Tour Fee, you are deemed to have understood and accepted the terms & conditions above.",
   "term-and-condition": {
     "point1": "Flight tickets and visa are not included",
     "point2": "The registration deposit is non-refundable",
@@ -132,8 +137,6 @@
     "point2": "Souvenir shopping at Karama Market / Deira",
     "point3": "Transfer to airport (drop-off by travel team)"
   },
-
-  "abu-dhabi-itinerary-title": "Abu Dhabi Itinerary",
 
   "abu-dhabi-day1": {
     "point1": "Arrival in Dubai (Morning/Afternoon)",
@@ -212,5 +215,99 @@
 
   "adu-dhabi-subtitle-2": "Exclusive Destinations: Here's the Beauty that awaits",
   "abu-dhabi-footer-desc": "We will Give You The Best Recommendation for Every Package You Need.",
-  "abu-dhabi-subtitle-destination": "Abu Dhabi welcomes you with warm traditions and incredible sights."
+  "abu-dhabi-subtitle-destination": "Abu Dhabi is the capital of the United Arab Emirates (UAE) and is the second largest city after Dubai. Located on an island in the Persian Gulf, the city is known as the country's center of government, culture, and economy. Abu Dhabi offers an exciting mix of modern architecture, rich Islamic culture, and the natural beauty of the desert and coast.",
+  "abu-dhabi-destination": {
+    "title-1": "Sheikh Zayed Grand Mosque",
+    "desc-1": "The largest mosque in the UAE and an icon of Abu Dhabi. Its majestic architecture, with 82 domes and 1,000 marble pillars, is a symbol of the beauty of modern Islam that is open to travelers from all over the world.",
+    "title-2": "Qasr Al Watan",
+    "desc-2": "A state palace that is open to the public. Visitors can explore the grand halls, royal library, and meeting rooms for world leaders.",
+    "title-3": "Louvre Abu Dhabi",
+    "desc-3": "A world-class museum of art and culture in collaboration with France. It showcases works from various civilizations, from ancient to modern times, in an iconic building in the shape of a luminous dome.",
+    "title-4": "Corniche Sightseeing",
+    "desc-4": "A beautiful beachfront stretching for 8km, with walking paths, parks and public beaches. A great place to relax while enjoying the panoramic view of the Arabian Gulf.",
+    "title-5": "Heritage Village",
+    "desc-5": "A replica of a traditional Emirati village that showcases the life of Arabs before the modern era. There are handicrafts, a small museum and views out to sea."
+  },
+
+  "estimation": {
+    "title": "Estimate",
+    "no": "No",
+    "component": "Components",
+    "details": "Details",
+    "price": "Price (USD/pax)",
+    "accommodation": "Accommodation (2 nights)",
+    "hotelDetail": "4-star hotel (Rove Downtown / ibis One Central or equivalent)",
+    "twinSharing": "Twin Sharing (2 persons/room), breakfast included",
+    "singleRoom": "Single Room (optional), additional charge USD 100 for single occupancy",
+    "extraBed": "Extra Bed (optional), available in selected rooms depending on hotel",
+    "transportationGuide": "Transportation & Guide",
+    "transportationDetail": "Airport pick up/drop off, city tour, desert safari, AC car + driver + guide",
+    "excursionTickets": "Excursion & Activity Tickets",
+    "excursionDetail": "Burj Khalifa, Desert Safari (includes all activities & shows)",
+    "meals": "Meals",
+    "mealsDetail": "2x Breakfast (hotel), 1x BBQ Dinner (safari)",
+    "travelFee": "Travel Handling Fee",
+    "travelDetail": "Administration fee, digital guide, small souvenir, mineral water",
+    "totalEstimation": "Total Estimation per Pax (Twin Share)"
+  },
+
+  "new-dubai": {
+    "title": "Estimated Price for New Dubai Package",
+    "no": "No",
+    "component": "Component",
+    "details": "Details",
+    "price": "Price (USD/pax)",
+    "accommodation": "Accommodation (3 nights)",
+    "hotelDetail": "4-star hotel (3 nights)",
+    "hotelPriceCalc": "3 x USD 110 = USD 330",
+    "transportation": "Transportation",
+    "transportationDetail": "Pick-up / drop-off",
+    "tickets": "Tourist Attraction Tickets",
+    "ticketDetail": "Tourist locations (3 attractions)",
+    "guideHandling": "Guide, Handling, Ticket Support",
+    "guideDetail": "Guide fee, handling, and other ticket fees",
+    "markup": "Markup / Coordination",
+    "markupDetail": "Agency fee and others",
+    "total": "Total"
+  },
+
+  "estimation-abu-dhabi": {
+    "title": "Estimated Price - Abu Dhabi",
+    "no": "No",
+    "component": "Component",
+    "details": "Details",
+    "price": "Price (USD/pax)",
+    "accommodation": "Accommodation (2 nights)",
+    "hotelDetail": "4-star hotel (incl. breakfast)",
+    "transportationGuide": "Transportation & Guide",
+    "transportationDetail": "Airport transfer, full-day city tour, private AC car + local guide",
+    "excursionTickets": "Tourist Attractions & Activities",
+    "excursionDetail": "Sheikh Zayed Grand Mosque, Qasr Al Watan, Heritage Village, Date Market",
+    "meals": "Meals",
+    "mealsDetail": "2x lunch, 2x dinner, and mineral water during tour",
+    "handling": "Handling & Coordination",
+    "handlingDetail": "Entrance tickets, scheduling, small souvenir, digital itinerary",
+    "totalEstimation": "Total Estimation"
+  },
+
+  "estimation-new-abu-dhabi": {
+    "title": "Estimated Price - New Abu Dhabi",
+    "no": "No",
+    "component": "Component",
+    "details": "Details",
+    "price": "Price (USD/pax)",
+    "accommodation": "Accommodation (3 nights)",
+    "hotelDetail": "4-star hotel (incl. breakfast)",
+    "transportationGuide": "Transportation & Guide",
+    "transportationDetail": "Airport transfer, full-day city tour, private AC car + local guide",
+    "excursionTickets": "Tourist Attractions & Activities",
+    "excursionDetail": "Ferrari World, Warner Bros, Yas Waterworld, Grand Mosque, Heritage Village",
+    "meals": "Meals",
+    "mealsDetail": "3x lunch, 3x dinner, children's snacks, and mineral water during tour",
+    "handling": "Handling & Coordination",
+    "handlingDetail": "Entrance tickets, scheduling, small souvenir, digital itinerary",
+    "totalEstimation": "Total Estimation"
+  }
+
+
 }

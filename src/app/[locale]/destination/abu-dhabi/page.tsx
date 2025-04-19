@@ -33,12 +33,12 @@ export default async function AbuDhabuPage({ params }: Props) {
                     <div className="md:flex justify-between gap-4 items-center">
                         <div className="md:w-1/2">
                             <p className="text-2xl font-bold text-yellow-400">
-                                {t("dubai-header-1")}
+                                {t("abu-dhabi-destination.title-1")}
                             </p>
-                            <p className="text-md mt-8">{t("dubai-desc-1")}</p>
+                            <p className="text-md mt-8">{t("abu-dhabi-destination.desc-1")}</p>
                         </div>
                         <Image
-                            src={"/images/optima-foto-5.png"}
+                            src={"/images/mosque.png"}
                             alt={`Optima Portfolio`}
                             width={300}
                             height={100}
@@ -47,37 +47,7 @@ export default async function AbuDhabuPage({ params }: Props) {
                     </div>
                     <div className="md:flex justify-between gap-4 items-center">
                         <Image
-                            src={"/images/optima-foto-6.png"}
-                            alt={`Optima Portfolio`}
-                            width={300}
-                            height={100}
-                            className="w-1/3 rounded-lg object-cover"
-                        />
-                        <div className="md:w-1/2 text-right">
-                            <p className="text-2xl font-bold text-yellow-400">
-                                {t("dubai-header-2")}
-                            </p>
-                            <p className="text-md mt-8">{t("dubai-desc-2")}</p>
-                        </div>
-                    </div>
-                    <div className="md:flex justify-between gap-4 items-center">
-                        <div className="md:w-1/2">
-                            <p className="text-2xl font-bold text-yellow-400">
-                                {t("dubai-header-3")}
-                            </p>
-                            <p className="text-md mt-8">{t("dubai-desc-3")}</p>
-                        </div>
-                        <Image
-                            src={"/images/optima-foto-7.png"}
-                            alt={`Optima Portfolio`}
-                            width={300}
-                            height={100}
-                            className="w-1/3 rounded-lg object-cover"
-                        />
-                    </div>
-                    <div className="md:flex justify-between gap-4 items-center">
-                        <Image
-                            src={"/images/optima-foto-8.png"}
+                            src={"/images/Qasr-Al-Watan.png"}
                             alt={`Optima Portfolio`}
                             width={300}
                             height={100}
@@ -85,20 +55,50 @@ export default async function AbuDhabuPage({ params }: Props) {
                         />
                         <div className="md:w-1/2 text-right">
                             <p className="text-2xl font-bold text-yellow-400">
-                                {t("dubai-header-4")}
+                                {t("abu-dhabi-destination.title-2")}
                             </p>
-                            <p className="text-md mt-8">{t("dubai-desc-4")}</p>
+                            <p className="text-md mt-8">{t("abu-dhabi-destination.desc-2")}</p>
                         </div>
                     </div>
                     <div className="md:flex justify-between gap-4 items-center">
                         <div className="md:w-1/2">
                             <p className="text-2xl font-bold text-yellow-400">
-                                {t("dubai-header-5")}
+                                {t("abu-dhabi-destination.title-3")}
                             </p>
-                            <p className="text-md mt-8">{t("dubai-desc-5")}</p>
+                            <p className="text-md mt-8">{t("abu-dhabi-destination.desc-3")}</p>
                         </div>
                         <Image
-                            src={"/images/optima-foto-9.png"}
+                            src={"/images/lova-abuhabi.jpg"}
+                            alt={`Optima Portfolio`}
+                            width={300}
+                            height={100}
+                            className="w-1/3 rounded-lg object-cover"
+                        />
+                    </div>
+                    <div className="md:flex justify-between gap-4 items-center">
+                        <Image
+                            src={"/images/Corniche-Sightseeing.jpg"}
+                            alt={`Optima Portfolio`}
+                            width={300}
+                            height={100}
+                            className="w-1/3 rounded-lg object-cover"
+                        />
+                        <div className="md:w-1/2 text-right">
+                            <p className="text-2xl font-bold text-yellow-400">
+                                {t("abu-dhabi-destination.title-4")}
+                            </p>
+                            <p className="text-md mt-8">{t("abu-dhabi-destination.desc-4")}</p>
+                        </div>
+                    </div>
+                    <div className="md:flex justify-between gap-4 items-center">
+                        <div className="md:w-1/2">
+                            <p className="text-2xl font-bold text-yellow-400">
+                                {t("abu-dhabi-destination.title-5")}
+                            </p>
+                            <p className="text-md mt-8">{t("abu-dhabi-destination.desc-5")}</p>
+                        </div>
+                        <Image
+                            src={"/images/Desa-Warisan.png"}
                             alt={`Optima Portfolio`}
                             width={300}
                             height={100}
@@ -110,12 +110,12 @@ export default async function AbuDhabuPage({ params }: Props) {
                     <div className="mb-12 mt-12">
                         <div className="">
                             <p className="text-2xl font-bold text-yellow-400">
-                                {t("dubai-header-1")}
+                                {t("abu-dhabi-destination.title-1")}
                             </p>
-                            <p className="text-md mt-8">{t("dubai-desc-1")}</p>
+                            <p className="text-md mt-8">{t("abu-dhabi-destination.desc-1")}</p>
                         </div>
                         <Image
-                            src={"/images/optima-foto-5.png"}
+                            src={"/images/mosque.png"}
                             alt={`Optima Portfolio`}
                             width={300}
                             height={100}
@@ -125,12 +125,12 @@ export default async function AbuDhabuPage({ params }: Props) {
                     <div className="mb-12">
                         <div className="t">
                             <p className="text-2xl font-bold text-yellow-400">
-                                {t("dubai-header-2")}
+                                {t("abu-dhabi-destination.title-2")}
                             </p>
-                            <p className="text-md mt-8">{t("dubai-desc-2")}</p>
+                            <p className="text-md mt-8">{t("abu-dhabi-destination.desc-2")}</p>
                         </div>
                         <Image
-                            src={"/images/optima-foto-6.png"}
+                            src={"/images/Qasr-Al-Watan.png"}
                             alt={`Optima Portfolio`}
                             width={300}
                             height={100}
@@ -140,12 +140,12 @@ export default async function AbuDhabuPage({ params }: Props) {
                     <div className="mb-12">
                         <div className="">
                             <p className="text-2xl font-bold text-yellow-400">
-                                {t("dubai-header-3")}
+                                {t("abu-dhabi-destination.title-3")}
                             </p>
-                            <p className="text-md mt-8">{t("dubai-desc-3")}</p>
+                            <p className="text-md mt-8">{t("abu-dhabi-destination.desc-3")}</p>
                         </div>
                         <Image
-                            src={"/images/optima-foto-7.png"}
+                            src={"/images/lova-abuhabi.jpg"}
                             alt={`Optima Portfolio`}
                             width={300}
                             height={100}
@@ -155,12 +155,12 @@ export default async function AbuDhabuPage({ params }: Props) {
                     <div className="mb-12">
                         <div className="">
                             <p className="text-2xl font-bold text-yellow-400">
-                                {t("dubai-header-4")}
+                                {t("abu-dhabi-destination.title-4")}
                             </p>
-                            <p className="text-md mt-8">{t("dubai-desc-4")}</p>
+                            <p className="text-md mt-8">{t("abu-dhabi-destination.desc-4")}</p>
                         </div>
                         <Image
-                            src={"/images/optima-foto-8.png"}
+                            src={"/images/Corniche-Sightseeing.jpg"}
                             alt={`Optima Portfolio`}
                             width={300}
                             height={100}
@@ -170,12 +170,12 @@ export default async function AbuDhabuPage({ params }: Props) {
                     <div className="mb-12">
                         <div className="">
                             <p className="text-2xl font-bold text-yellow-400">
-                                {t("dubai-header-5")}
+                                {t("abu-dhabi-destination.title-5")}
                             </p>
-                            <p className="text-md mt-8">{t("dubai-desc-5")}</p>
+                            <p className="text-md mt-8">{t("abu-dhabi-destination.desc-5")}</p>
                         </div>
                         <Image
-                            src={"/images/optima-foto-9.png"}
+                            src={"/images/Desa-Warisan.png"}
                             alt={`Optima Portfolio`}
                             width={300}
                             height={100}
