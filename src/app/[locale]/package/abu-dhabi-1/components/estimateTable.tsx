@@ -19,7 +19,7 @@ export default function EstimatedAbuDhabiTable() {
 						<th className="text-right px-3 py-2">{t("price")}</th>
 					</tr>
 				</thead>
-				<tbody className="text-white text-sm font-light">
+				<tbody className="text-black dark:text-white text-sm font-light">
 					<tr className="transition rounded-md">
 						<td className="px-3 py-3 align-top">1</td>
 						<td className="px-3 py-3 font-medium">{t("accommodation")}</td>
