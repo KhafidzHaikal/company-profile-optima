@@ -3,7 +3,8 @@ import "../globals.css";
 import { I18nProvider } from "@/components/I18nProvider";
 import { ReactNode } from "react";
 import { ThemeProvider } from "@/components/ThemeProvider";
-import { Analytics } from "@vercel/analytics/react"
+import { Analytics } from "@vercel/analytics/react";
+import { Toaster } from "react-hot-toast";
 
 const inter = Inter({
 	subsets: ["latin"],
@@ -54,7 +55,10 @@ export default async function RootLayout({ children, params }: Props) {
 					defaultTheme="system"
 					enableSystem
 					disableTransitionOnChange>
-					<I18nProvider locale={locale}>{children}</I18nProvider>
+					<I18nProvider locale={locale}>
+						<Toaster position="top-center"/>
+						{children}
+					</I18nProvider>
 				</ThemeProvider>
 				<Analytics />
 			</body>
