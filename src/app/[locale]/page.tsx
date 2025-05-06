@@ -51,7 +51,7 @@ export default async function Home({ params }: Props) {
 						{t("jumbotron-text-desc")}
 					</p>
 					<div className="mx-12 lg:mx-32 mt-4">
-						<Link href={"#"}>
+						<Link href={"https://wa.me/6281388266868"}>
 							<Button className="rounded-md py-4 flex items-center gap-2 text-black bg-[#F3C623] hover:bg-[#f5d666] cursor-pointer">
 								{t("jumbotron-text-button")}
 								<FaWhatsapp className="text-md" />
@@ -90,7 +90,7 @@ export default async function Home({ params }: Props) {
 										{t("text-card-description-1")}
 									</p>
 									<div className="flex md:block xl:flex justify-between items-center mt-8 gap-2">
-										<Link href={""}>
+										<Link href={"https://wa.me/6281388266868"}>
 											<Button className=" rounded-md py-4 flex items-center gap-2 mx-auto sm:mx-0 text-black bg-[#F3C623] hover:bg-[#f5d666] cursor-pointer w-full">
 												{t("contact")}
 												<FaWhatsapp className="text-md" />
@@ -130,7 +130,7 @@ export default async function Home({ params }: Props) {
 										{t("text-card-description-2")}
 									</p>
 									<div className="flex md:block xl:flex justify-between items-center mt-8 gap-2">
-										<Link href={""}>
+										<Link href={"https://wa.me/6281388266868"}>
 											<Button className=" rounded-md py-4 flex items-center gap-2 mx-auto sm:mx-0 text-black bg-[#F3C623] hover:bg-[#f5d666] cursor-pointer w-full">
 												{t("contact")}
 												<FaWhatsapp className="text-md" />
@@ -170,7 +170,7 @@ export default async function Home({ params }: Props) {
 										{t("text-card-description-3")}
 									</p>
 									<div className="flex md:block xl:flex justify-between items-center mt-8 gap-2">
-										<Link href={""}>
+										<Link href={"https://wa.me/6281388266868"}>
 											<Button className=" rounded-md py-4 flex items-center gap-2 mx-auto sm:mx-0 text-black bg-[#F3C623] hover:bg-[#f5d666] cursor-pointer w-full">
 												{t("contact")}
 												<FaWhatsapp className="text-md" />
@@ -210,7 +210,7 @@ export default async function Home({ params }: Props) {
 										{t("text-card-description-4")}
 									</p>
 									<div className="flex md:block xl:flex justify-between items-center mt-8 gap-2">
-										<Link href={""}>
+										<Link href={"https://wa.me/6281388266868"}>
 											<Button className=" rounded-md py-4 flex items-center gap-2 mx-auto sm:mx-0 text-black bg-[#F3C623] hover:bg-[#f5d666] cursor-pointer w-full">
 												{t("contact")}
 												<FaWhatsapp className="text-md" />
@@ -248,7 +248,7 @@ export default async function Home({ params }: Props) {
 								{t("subtitle-menu-bottom")}
 							</p>
 							<div className="mx-12 lg:mx-32 mt-4">
-								<Link href={"/"}>
+								<Link href={"https://wa.me/6281388266868"}>
 									<Button className=" rounded-md py-4 flex items-center gap-2 text-black bg-[#F3C623] hover:bg-[#f5d666] cursor-pointer">
 										{t("see-more")}
 										<IoArrowRedoOutline className="text-md" />
@@ -370,7 +370,7 @@ export default async function Home({ params }: Props) {
 						<p className="text-sm my-4 text-black">
 							{t("subtitle-menu-next-call")}
 						</p>
-						<Link href={""}>
+						<Link href={"https://wa.me/6281388266868"}>
 							<Button className=" rounded-md py-4 flex items-center gap-2  text-black bg-[#F3C623] border-2 border-black cursor-pointer">
 								{t("contact")}
 								<FaWhatsapp className="text-md" />

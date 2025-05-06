@@ -117,7 +117,7 @@ const Footer = () => {
 							{t("social-media")}
 						</h3>
 						<div className="flex gap-4 text-2xl mt-2">
-							<a href="" target="_blank" rel="noopener noreferrer">
+							<a href="https://wa.me/6281388266868" target="_blank" rel="noopener noreferrer">
 								<FaWhatsapp />
 							</a>
 							<a href="" target="_blank" rel="noopener noreferrer">

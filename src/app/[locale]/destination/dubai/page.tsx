@@ -23,7 +23,7 @@ export default async function DubaiPage({ params }: Props) {
 			<section className="py-12 mx-12 lg:mx-32 lg:mt-12">
 				<p className="text-3xl font-bold text-yellow-400">Dubai</p>
 				<p className="text-md mt-8 mb-8">{t("dubai-subtitle")}</p>
-				<Link href={""}>
+				<Link href={"https://wa.me/6281388266868"}>
 					<Button className="mt-4 mb-8 rounded-md py-4 flex items-center gap-2  text-black bg-[#F3C623] border-2 border-black hover:bg-[#f4e19d] cursor-pointer">
 						{t("dubai-text-button")}
 						<FaWhatsapp className="text-md" />
@@ -189,7 +189,7 @@ export default async function DubaiPage({ params }: Props) {
 				id="background-yellow">
 				<p className="text-3xl font-bold text-black">{t("dubai-footer")}</p>
 				<p className="text-md mt-4 text-black">{t("dubai-footer-desc")}</p>
-				<Link href={""}>
+				<Link href={"https://wa.me/6281388266868"}>
 					<Button className="mt-8 rounded-md py-4 flex items-center gap-2  text-black bg-[#F3C623] hover:bg-[#f4e19d] border-2 border-black cursor-pointer">
 						{t("dubai-text-button")}
 						<FaWhatsapp className="text-md" />
