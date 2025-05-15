@@ -120,7 +120,7 @@ const Footer = () => {
 							<a href="https://wa.me/6281388266868" target="_blank" rel="noopener noreferrer">
 								<FaWhatsapp />
 							</a>
-							<a href="" target="_blank" rel="noopener noreferrer">
+							<a href="https://www.instagram.com/newoptimatourism?igsh=MTlkY3ZscTN6aDNqZQ==" target="_blank" rel="noopener noreferrer">
 								<FaInstagram />
 							</a>
 						</div>
