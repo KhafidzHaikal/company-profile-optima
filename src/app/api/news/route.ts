@@ -51,7 +51,7 @@ export async function POST(req: NextRequest) {
     }
 
     let imageUrl = "";
-    if (file) {
+    if (file && file instanceof File && file.size > 0) {
       const arrayBuffer = await file.arrayBuffer();
       const buffer = Buffer.from(arrayBuffer);
       const fileExt = file.name.split(".").pop();
