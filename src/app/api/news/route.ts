@@ -3,6 +3,16 @@ import fs from "fs";
 import path from "path";
 import { v4 as uuid } from "uuid";
 
+interface NewsData {
+  id: number;
+  title: string;
+  content: string;
+  excerpt: string;
+  image: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
 const articlesDir = path.join(process.cwd(), "public/articles");
 const dataFile = path.join(process.cwd(), "src/app/api/data/news.json");
 
@@ -19,7 +29,7 @@ function readNewsData() {
   }
 }
 
-function writeNewsData(data: any[]) {
+function writeNewsData(data: NewsData[]) {
   fs.writeFileSync(dataFile, JSON.stringify(data, null, 2));
 }
 
@@ -53,7 +63,7 @@ export async function POST(req: NextRequest) {
 
     const news = readNewsData();
     const newNews = {
-      id: news.length > 0 ? Math.max(...news.map((n: any) => n.id)) + 1 : 1,
+      id: news.length > 0 ? Math.max(...news.map((n: NewsData) => n.id)) + 1 : 1,
       title,
       content,
       excerpt,

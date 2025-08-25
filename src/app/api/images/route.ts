@@ -3,6 +3,11 @@ import fs from "fs";
 import path from "path";
 import { v4 as uuid } from "uuid";
 
+interface ImageData {
+  id: number;
+  source: string;
+}
+
 const uploadDir = path.join(process.cwd(), "public/uploads");
 const dataFile = path.join(process.cwd(), "src/app/api/data/images.json");
 
@@ -19,7 +24,7 @@ function readImagesData() {
   }
 }
 
-function writeImagesData(data: any[]) {
+function writeImagesData(data: ImageData[]) {
   fs.writeFileSync(dataFile, JSON.stringify(data, null, 2));
 }
 
@@ -48,7 +53,7 @@ export async function POST(req: NextRequest) {
 
   const existing = readImagesData();
   const newImage = {
-    id: existing.length > 0 ? Math.max(...existing.map((img: any) => img.id)) + 1 : 1,
+    id: existing.length > 0 ? Math.max(...existing.map((img: ImageData) => img.id)) + 1 : 1,
     source: fileUrl,
   };
 
