@@ -1,63 +1,23 @@
-"use client";
-
-import { useTranslations } from "next-intl";
-import { useEffect, useState } from "react";
-import { useParams, useRouter } from "next/navigation";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
+import Link from "next/link";
 import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
+import { getNewsById } from "@/lib/news";
 
-type NewsItem = {
-  id: number;
-  title: string;
-  content: string;
-  excerpt: string;
-  image: string;
-  createdAt: string;
-  updatedAt: string;
+type Props = {
+  params?: Promise<{ locale: string; id: string }>;
 };
 
-export default function NewsDetailPage() {
-  const t = useTranslations();
-  const params = useParams();
-  const router = useRouter();
-  const [news, setNews] = useState<NewsItem | null>(null);
-  const [loading, setLoading] = useState(true);
+export default async function NewsDetailPage({ params }: Props) {
+  const resolvedParams = params ? await params : { locale: "en", id: "1" };
+  const { locale, id } = resolvedParams;
+  setRequestLocale(locale);
+  const t = await getTranslations({ locale });
 
-  useEffect(() => {
-    const fetchNews = async () => {
-      try {
-        const res = await fetch("/api/news");
-        const data = await res.json();
-        const newsItem = data.find((item: NewsItem) => item.id === parseInt(params.id as string));
-        setNews(newsItem || null);
-      } catch (error) {
-        console.error("Failed to fetch news:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    if (params.id) {
-      fetchNews();
-    }
-  }, [params.id]);
-
-  if (loading) {
-    return (
-      <div className="min-h-screen flex flex-col">
-        <main className="mt-12 lg:mt-0 flex-1">
-          <Navbar />
-          <section className="py-12 mx-12 lg:mx-32 lg:mt-12">
-            <div className="text-center py-8">Loading...</div>
-          </section>
-        </main>
-        <Footer />
-      </div>
-    );
-  }
+  const news = getNewsById(parseInt(id));
 
   if (!news) {
     return (
@@ -67,10 +27,12 @@ export default function NewsDetailPage() {
           <section className="py-12 mx-12 lg:mx-32 lg:mt-12">
             <div className="text-center py-8">
               <h1 className="text-2xl font-bold mb-4">News not found</h1>
-              <Button onClick={() => router.back()}>
-                <ArrowLeft className="mr-2 h-4 w-4" />
-                Go Back
-              </Button>
+              <Link href={`/${locale}/news`}>
+                <Button>
+                  <ArrowLeft className="mr-2 h-4 w-4" />
+                  {t("back")}
+                </Button>
+              </Link>
             </div>
           </section>
         </main>
@@ -84,14 +46,15 @@ export default function NewsDetailPage() {
       <main className="mt-12 lg:mt-0 flex-1">
         <Navbar />
         <section className="py-12 mx-12 lg:mx-32 lg:mt-12">
-          <Button 
-            variant="outline" 
-            onClick={() => router.back()}
-            className="mb-6"
-          >
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            {t("back")}
-          </Button>
+          <Link href={`/${locale}/news`}>
+            <Button 
+              variant="outline" 
+              className="mb-6"
+            >
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              {t("back")}
+            </Button>
+          </Link>
 
           <article className="max-w-4xl mx-auto">
             {news.image && (

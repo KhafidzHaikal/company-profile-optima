@@ -1,57 +1,22 @@
-"use client";
-
-import { useTranslations } from "next-intl";
-import { useEffect, useState } from "react";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
+import { getNewsData } from "@/lib/news";
 
-type NewsItem = {
-  id: number;
-  title: string;
-  content: string;
-  excerpt: string;
-  image: string;
-  createdAt: string;
-  updatedAt: string;
+type Props = {
+  params?: Promise<{ locale: string }>;
 };
 
-export default function NewsPage() {
-  const t = useTranslations();
-  const [news, setNews] = useState<NewsItem[]>([]);
-  const [loading, setLoading] = useState(true);
+export default async function NewsPage({ params }: Props) {
+  const resolvedParams = params ? await params : { locale: "en" };
+  const { locale } = resolvedParams;
+  setRequestLocale(locale);
+  const t = await getTranslations({ locale });
 
-  useEffect(() => {
-    const fetchNews = async () => {
-      try {
-        const res = await fetch("/api/news");
-        const data = await res.json();
-        setNews(data);
-      } catch (error) {
-        console.error("Failed to fetch news:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchNews();
-  }, []);
-
-  if (loading) {
-    return (
-      <div className="min-h-screen flex flex-col">
-        <main className="mt-12 lg:mt-0 flex-1">
-          <Navbar />
-          <section className="py-12 mx-12 lg:mx-32 lg:mt-12">
-            <div className="text-center py-8">Loading news...</div>
-          </section>
-        </main>
-        <Footer />
-      </div>
-    );
-  }
+  const newsData = getNewsData();
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -61,13 +26,13 @@ export default function NewsPage() {
           <p className="text-2xl font-bold text-yellow-400">{t("news")}</p>
           <p className="text-md mt-8 mb-12">{t("news-subtitle")}</p>
 
-          {news.length === 0 ? (
+          {newsData.length === 0 ? (
             <div className="text-center py-12">
               <p className="text-muted-foreground">No news articles available.</p>
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {news.map((item) => (
+              {newsData.map((item) => (
                 <Card key={item.id} className="overflow-hidden hover:shadow-lg transition-shadow">
                   {item.image && (
                     <div className="relative h-48 w-full">
@@ -90,7 +55,7 @@ export default function NewsPage() {
                       {item.excerpt}
                     </p>
                     <Link
-                      href={`/news/${item.id}`}
+                      href={`/${locale}/news/${item.id}`}
                       className="inline-flex items-center text-sm font-medium text-primary hover:underline"
                     >
                       {t("read-more")} →

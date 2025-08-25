@@ -11,6 +11,7 @@ import {
 import Image from "next/image";
 import Footer from "@/components/footer/Footer";
 import { setRequestLocale, getTranslations } from "next-intl/server";
+import { getLatestNews } from "@/lib/news";
 
 type Props = {
 	params?: Promise<{ locale: string }>;
@@ -377,6 +378,44 @@ export default async function Home({ params }: Props) {
 							</Button>
 						</Link>
 					</div>
+				</div>
+			</section>
+			<section className="py-12 mx-12 lg:mx-32">
+				<p className="text-2xl text-yellow-400">{t("news")}</p>
+				<div className="md:flex justify-between items-center">
+					<p className="text-md my-4">{t("news-subtitle")}</p>
+					<Link href={`/${locale}/news`} className="text-md underline text-yellow-400">
+						{t("see-more")}
+					</Link>
+				</div>
+				<div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+					{getLatestNews(3).map((item) => (
+						<div key={item.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+							{item.image && (
+								<div className="relative h-48 w-full">
+									<Image
+										src={item.image}
+										alt={item.title}
+										fill
+										className="object-cover"
+									/>
+								</div>
+							)}
+							<div className="p-4">
+								<h3 className="text-lg font-semibold text-black mb-2 line-clamp-2">{item.title}</h3>
+								<p className="text-sm text-gray-600 mb-2">
+									{new Date(item.createdAt).toLocaleDateString()}
+								</p>
+								<p className="text-sm text-gray-700 line-clamp-3 mb-4">{item.excerpt}</p>
+								<Link
+									href={`/${locale}/news/${item.id}`}
+									className="inline-flex items-center text-sm font-medium text-yellow-600 hover:text-yellow-700"
+								>
+									{t("read-more")} →
+								</Link>
+							</div>
+						</div>
+					))}
 				</div>
 			</section>
 			<Footer />
