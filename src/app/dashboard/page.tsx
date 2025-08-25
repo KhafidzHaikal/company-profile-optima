@@ -38,7 +38,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import Swal from "sweetalert2";
+import customSwal, { successSwal, errorSwal, confirmSwal } from "@/lib/sweetalert";
 import Image from "next/image";
 
 type ImageItem = {
@@ -67,7 +67,7 @@ export default function DashboardPage() {
 	
 		const allowedTypes = ["image/png", "image/jpeg"];
 		if (!allowedTypes.includes(selected.type)) {
-			Swal.fire({
+			errorSwal.fire({
 				icon: "error",
 				title: "Invalid file type",
 				text: "Only PNG and JPG images are allowed.",
@@ -80,7 +80,7 @@ export default function DashboardPage() {
 	
 	const handleUpload = async () => {
 		if (!file) {
-			Swal.fire({
+			customSwal.fire({
 				icon: "warning",
 				title: "No file selected",
 				text: "Please choose an image before uploading.",
@@ -102,7 +102,7 @@ export default function DashboardPage() {
 			if (res.ok) {
 				const data = await res.json();
 
-				Swal.fire({
+				successSwal.fire({
 					icon: "success",
 					title: "Upload Successful",
 					text: "Your image has been uploaded!",
@@ -118,7 +118,7 @@ export default function DashboardPage() {
 				const newImages = await updated.json();
 				setImages(newImages);
 			} else {
-				Swal.fire({
+				errorSwal.fire({
 					icon: "error",
 					title: "Upload Failed",
 					text: "Something went wrong. Try again.",
@@ -126,7 +126,7 @@ export default function DashboardPage() {
 			}
 		} catch (err) {
 			console.error("Error uploading image:", err);
-			Swal.fire({
+			errorSwal.fire({
 				icon: "error",
 				title: "Upload Error",
 				text: "Unable to upload the image.",
@@ -137,7 +137,7 @@ export default function DashboardPage() {
 	};
 
 	const deleteImage = async (id: number) => {
-		const confirm = await Swal.fire({
+		const confirm = await confirmSwal.fire({
 			title: "Delete this image?",
 			text: "This action cannot be undone!",
 			icon: "warning",
@@ -155,7 +155,7 @@ export default function DashboardPage() {
 			});
 
 			if (res.ok) {
-				Swal.fire({
+				successSwal.fire({
 					icon: "success",
 					title: "Deleted!",
 					text: "Image has been removed.",
@@ -164,7 +164,7 @@ export default function DashboardPage() {
 				});
 				setImages((prev) => prev.filter((img) => img.id !== id));
 			} else {
-				Swal.fire({
+				errorSwal.fire({
 					icon: "error",
 					title: "Delete Failed",
 					text: "Something went wrong.",
@@ -172,7 +172,7 @@ export default function DashboardPage() {
 			}
 		} catch (err) {
 			console.error("Delete error:", err);
-			Swal.fire({
+			errorSwal.fire({
 				icon: "error",
 				title: "Error",
 				text: "Unable to delete the image.",
@@ -199,12 +199,15 @@ export default function DashboardPage() {
 						</BreadcrumbList>
 					</Breadcrumb>
 				</header>
-				<div className="flex flex-1 flex-col gap-4 p-4">
-					<h1>Welcome back, {user?.name}</h1>
-					<div className="w-[200px]">
+				<div className="flex flex-1 flex-col gap-6 p-6">
+					<div className="flex items-center justify-between">
+						<div>
+							<h1 className="text-3xl font-bold tracking-tight">Images</h1>
+							<p className="text-muted-foreground">Manage your image gallery</p>
+						</div>
 						<Dialog>
 							<DialogTrigger asChild>
-								<Button>Add Image</Button>
+								<Button className="bg-yellow-400 hover:bg-yellow-500 text-black">Add Image</Button>
 							</DialogTrigger>
 							<DialogContent className="sm:max-w-[425px]">
 								<DialogHeader>
@@ -230,7 +233,8 @@ export default function DashboardPage() {
 							</DialogContent>
 						</Dialog>
 					</div>
-					<Table>
+					<div className="rounded-md border">
+						<Table>
 						<TableHeader>
 							<TableRow>
 								<TableHead className="w-[150px]">Preview</TableHead>
@@ -272,7 +276,8 @@ export default function DashboardPage() {
 								</TableRow>
 							</TableFooter>
 						)}
-					</Table>
+						</Table>
+					</div>
 				</div>
 			</SidebarInset>
 		</SidebarProvider>

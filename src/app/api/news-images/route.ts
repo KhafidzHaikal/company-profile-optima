@@ -1,7 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
-import { v4 as uuidv4 } from "uuid";
 
 export async function POST(request: NextRequest) {
   try {
@@ -17,16 +14,11 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Invalid file type" }, { status: 400 });
     }
 
+    // Convert to base64 for storage
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
-
-    const fileExtension = path.extname(file.name);
-    const fileName = `${uuidv4()}${fileExtension}`;
-    const filePath = path.join(process.cwd(), "public/articles", fileName);
-
-    fs.writeFileSync(filePath, buffer);
-
-    const imageUrl = `/articles/${fileName}`;
+    const base64 = buffer.toString('base64');
+    const imageUrl = `data:${file.type};base64,${base64}`;
 
     return NextResponse.json({ 
       success: true, 

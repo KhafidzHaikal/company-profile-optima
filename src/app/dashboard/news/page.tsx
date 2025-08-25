@@ -37,7 +37,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import Swal from "sweetalert2";
+import customSwal, { successSwal, errorSwal, confirmSwal } from "@/lib/sweetalert";
 
 type NewsItem = {
   id: number;
@@ -75,7 +75,7 @@ export default function NewsAdminPage() {
 
   const handleSubmit = async () => {
     if (!formData.title || !formData.content || !formData.excerpt) {
-      Swal.fire({
+      customSwal.fire({
         icon: "warning",
         title: "Missing fields",
         text: "Please fill all required fields.",
@@ -117,7 +117,7 @@ export default function NewsAdminPage() {
       });
 
       if (res.ok) {
-        Swal.fire({
+        successSwal.fire({
           icon: "success",
           title: editingNews ? "Updated!" : "Created!",
           text: `News ${editingNews ? "updated" : "created"} successfully.`,
@@ -134,7 +134,7 @@ export default function NewsAdminPage() {
         throw new Error("Failed to save news");
       }
     } catch {
-      Swal.fire({
+      errorSwal.fire({
         icon: "error",
         title: "Error",
         text: "Failed to save news.",
@@ -156,7 +156,7 @@ export default function NewsAdminPage() {
   };
 
   const handleDelete = async (id: number) => {
-    const confirm = await Swal.fire({
+    const confirm = await confirmSwal.fire({
       title: "Delete this news?",
       text: "This action cannot be undone!",
       icon: "warning",
@@ -174,7 +174,7 @@ export default function NewsAdminPage() {
       });
 
       if (res.ok) {
-        Swal.fire({
+        successSwal.fire({
           icon: "success",
           title: "Deleted!",
           text: "News has been removed.",
@@ -186,7 +186,7 @@ export default function NewsAdminPage() {
         throw new Error("Failed to delete news");
       }
     } catch {
-      Swal.fire({
+      errorSwal.fire({
         icon: "error",
         title: "Error",
         text: "Unable to delete the news.",
@@ -205,7 +205,7 @@ export default function NewsAdminPage() {
     if (file) {
       const allowedTypes = ["image/png", "image/jpeg", "image/jpg"];
       if (!allowedTypes.includes(file.type)) {
-        Swal.fire({
+        errorSwal.fire({
           icon: "error",
           title: "Invalid file type",
           text: "Only PNG and JPG images are allowed.",
@@ -235,15 +235,18 @@ export default function NewsAdminPage() {
             </BreadcrumbList>
           </Breadcrumb>
         </header>
-        <div className="flex flex-1 flex-col gap-4 p-4">
-          <h1>News Management - {user?.name}</h1>
-          <div className="w-[200px]">
+        <div className="flex flex-1 flex-col gap-6 p-6">
+          <div className="flex items-center justify-between">
+            <div>
+              <h1 className="text-3xl font-bold tracking-tight">News Management</h1>
+              <p className="text-muted-foreground">Create and manage news articles</p>
+            </div>
             <Dialog open={isDialogOpen} onOpenChange={(open) => {
               setIsDialogOpen(open);
               if (!open) resetForm();
             }}>
               <DialogTrigger asChild>
-                <Button>Add News</Button>
+                <Button className="bg-yellow-400 hover:bg-yellow-500 text-black">Add News</Button>
               </DialogTrigger>
               <DialogContent className="sm:max-w-[600px]">
                 <DialogHeader>
@@ -304,7 +307,8 @@ export default function NewsAdminPage() {
               </DialogContent>
             </Dialog>
           </div>
-          <Table>
+          <div className="rounded-md border">
+            <Table>
             <TableHeader>
               <TableRow>
                 <TableHead>Title</TableHead>
@@ -338,12 +342,13 @@ export default function NewsAdminPage() {
                 </TableRow>
               ))}
             </TableBody>
-          </Table>
-          {news.length === 0 && (
-            <div className="text-center text-muted-foreground py-8">
-              No news articles found.
-            </div>
-          )}
+            </Table>
+            {news.length === 0 && (
+              <div className="text-center text-muted-foreground py-8">
+                No news articles found.
+              </div>
+            )}
+          </div>
         </div>
       </SidebarInset>
     </SidebarProvider>
