@@ -1,1 +1,20 @@
-[]
+[
+  {
+    "id": 1,
+    "title": "Optima Travel Launches New Dubai Package",
+    "content": "We are excited to announce our latest Dubai travel package featuring luxury accommodations and exclusive tours.",
+    "excerpt": "New Dubai package with luxury accommodations and exclusive tours now available.",
+    "image": "/articles/ac891cd2-3f21-40ec-8fbe-b51b753279da.png",
+    "createdAt": "2024-01-15T10:00:00Z",
+    "updatedAt": "2024-01-15T10:00:00Z"
+  },
+  {
+    "id": 2,
+    "title": "Abu Dhabi Cultural Tour Now Available",
+    "content": "Experience the rich culture and heritage of Abu Dhabi with our specially curated cultural tour package.",
+    "excerpt": "Discover Abu Dhabi's rich culture and heritage with our new cultural tour package.",
+    "image": "/articles/f2e0c84e-7086-4575-b2fd-239fc5a90c87.png",
+    "createdAt": "2024-01-10T14:30:00Z",
+    "updatedAt": "2024-01-10T14:30:00Z"
+  }
+]
