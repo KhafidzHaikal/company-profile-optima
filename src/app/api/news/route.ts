@@ -15,7 +15,7 @@ interface NewsData {
   updatedAt: string;
 }
 
-const dataFile = path.join(process.cwd(), "src/app/api/data/news.json");
+const dataFile = path.join(process.cwd(), "public/data/news.json");
 const isVercel = process.env.VERCEL === '1';
 
 // In-memory storage for Vercel
