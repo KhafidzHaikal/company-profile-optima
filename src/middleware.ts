@@ -24,6 +24,8 @@ export default function middleware(request: NextRequest) {
     pathname.startsWith("/login-admin-optima") ||
     pathname.startsWith("/register-just-admin") ||
     pathname.startsWith("/dashboard") ||
+    pathname.startsWith("/news") ||
+    pathname.startsWith("/news") ||
     pathname.startsWith("/favicon.ico")
   ) {
     return NextResponse.next();

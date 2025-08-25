@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
 import cloudinary from "@/lib/cloudinary";
+import { v4 as uuidv4 } from 'uuid';
 
 interface NewsData {
   id: number;
@@ -15,18 +16,51 @@ interface NewsData {
 }
 
 const dataFile = path.join(process.cwd(), "src/app/api/data/news.json");
+const isVercel = process.env.VERCEL === '1';
 
-function readNewsData() {
-  try {
-    const data = fs.readFileSync(dataFile, "utf8");
-    return JSON.parse(data);
-  } catch {
-    return [];
+// In-memory storage for Vercel
+let memoryNewsData: NewsData[] = [];
+
+function readNewsData(): NewsData[] {
+  if (isVercel) {
+    // On Vercel, use in-memory storage with fallback to default data
+    if (memoryNewsData.length === 0) {
+      memoryNewsData = [
+        {
+          id: 1,
+          title: "Abu Dhabi Cultural Tour Now Available",
+          content: "Experience the rich culture and heritage of Abu Dhabi with our specially curated cultural tour package.",
+          excerpt: "Discover Abu Dhabi's rich culture and heritage with our new cultural tour package.",
+          image: "/articles/f2e0c84e-7086-4575-b2fd-239fc5a90c87.png",
+          createdAt: "2024-01-10T14:30:00Z",
+          updatedAt: "2024-01-10T14:30:00Z"
+        }
+      ];
+    }
+    return memoryNewsData;
+  } else {
+    // Local development - use file system
+    try {
+      const data = fs.readFileSync(dataFile, "utf8");
+      return JSON.parse(data);
+    } catch {
+      return [];
+    }
   }
 }
 
 function writeNewsData(data: NewsData[]) {
-  fs.writeFileSync(dataFile, JSON.stringify(data, null, 2));
+  if (isVercel) {
+    // On Vercel, store in memory
+    memoryNewsData = data;
+  } else {
+    // Local development - write to file
+    try {
+      fs.writeFileSync(dataFile, JSON.stringify(data, null, 2));
+    } catch (error) {
+      console.error('Failed to write news data:', error);
+    }
+  }
 }
 
 export async function GET() {
@@ -36,6 +70,12 @@ export async function GET() {
 
 export async function POST(req: NextRequest) {
   try {
+    // Validate Cloudinary configuration
+    if (!process.env.CLOUDINARY_CLOUD_NAME || !process.env.CLOUDINARY_API_KEY || !process.env.CLOUDINARY_API_SECRET) {
+      console.error('Missing Cloudinary environment variables');
+      return NextResponse.json({ error: "Server configuration error" }, { status: 500 });
+    }
+
     const contentType = req.headers.get('content-type') || '';
     let title: string, content: string, excerpt: string, imageUrl: string;
     
@@ -56,17 +96,35 @@ export async function POST(req: NextRequest) {
       
       imageUrl = "";
       if (file && file instanceof File && file.size > 0) {
+        // Option 1: Save to public folder with UUID
+        const fileExtension = file.name.split('.').pop();
+        const fileName = `${uuidv4()}.${fileExtension}`;
+        
+        const publicDir = path.join(process.cwd(), 'public', 'articles');
+        if (!fs.existsSync(publicDir)) {
+          fs.mkdirSync(publicDir, { recursive: true });
+        }
+        
+        const filePath = path.join(publicDir, fileName);
         const arrayBuffer = await file.arrayBuffer();
         const buffer = Buffer.from(arrayBuffer);
-        const base64 = buffer.toString('base64');
-        const dataURI = `data:${file.type};base64,${base64}`;
         
-        const result = await cloudinary.uploader.upload(dataURI, {
-          folder: 'optima-news',
-          resource_type: 'auto'
-        });
-        
-        imageUrl = result.secure_url;
+        if (!isVercel) {
+          // Local: save to public folder
+          fs.writeFileSync(filePath, buffer);
+          imageUrl = `/articles/${fileName}`;
+        } else {
+          // Vercel: use Cloudinary as fallback
+          const base64 = buffer.toString('base64');
+          const dataURI = `data:${file.type};base64,${base64}`;
+          
+          const result = await cloudinary.uploader.upload(dataURI, {
+            folder: 'optima-news',
+            resource_type: 'auto'
+          });
+          
+          imageUrl = result.secure_url;
+        }
       }
     }
 
