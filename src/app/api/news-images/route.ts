@@ -1,17 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
-import cloudinary from "@/lib/cloudinary";
 import { v4 as uuidv4 } from 'uuid';
 import fs from 'fs';
 import path from 'path';
 
 export async function POST(request: NextRequest) {
   try {
-    // Validate Cloudinary configuration
-    if (!process.env.CLOUDINARY_CLOUD_NAME || !process.env.CLOUDINARY_API_KEY || !process.env.CLOUDINARY_API_SECRET) {
-      console.error('Missing Cloudinary environment variables');
-      return NextResponse.json({ error: "Server configuration error" }, { status: 500 });
-    }
-
     const formData = await request.formData();
     const file = formData.get("file") as File;
 
