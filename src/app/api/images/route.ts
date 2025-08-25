@@ -16,9 +16,6 @@ let memoryImagesData: ImageData[] = [];
 
 function readImagesData() {
   if (isVercel) {
-    if (memoryImagesData.length === 0) {
-      memoryImagesData = [];
-    }
     return memoryImagesData;
   } else {
     try {

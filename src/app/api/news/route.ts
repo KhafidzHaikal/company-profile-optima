@@ -19,24 +19,20 @@ const dataFile = path.join(process.cwd(), "src/app/api/data/news.json");
 const isVercel = process.env.VERCEL === '1';
 
 // In-memory storage for Vercel
-let memoryNewsData: NewsData[] = [];
+let memoryNewsData: NewsData[] = [
+  {
+    id: 1,
+    title: "Abu Dhabi Cultural Tour Now Available",
+    content: "Experience the rich culture and heritage of Abu Dhabi with our specially curated cultural tour package.",
+    excerpt: "Discover Abu Dhabi's rich culture and heritage with our new cultural tour package.",
+    image: "/articles/f2e0c84e-7086-4575-b2fd-239fc5a90c87.png",
+    createdAt: "2024-01-10T14:30:00Z",
+    updatedAt: "2024-01-10T14:30:00Z"
+  }
+];
 
 function readNewsData(): NewsData[] {
   if (isVercel) {
-    // On Vercel, use in-memory storage with fallback to default data
-    if (memoryNewsData.length === 0) {
-      memoryNewsData = [
-        {
-          id: 1,
-          title: "Abu Dhabi Cultural Tour Now Available",
-          content: "Experience the rich culture and heritage of Abu Dhabi with our specially curated cultural tour package.",
-          excerpt: "Discover Abu Dhabi's rich culture and heritage with our new cultural tour package.",
-          image: "/articles/f2e0c84e-7086-4575-b2fd-239fc5a90c87.png",
-          createdAt: "2024-01-10T14:30:00Z",
-          updatedAt: "2024-01-10T14:30:00Z"
-        }
-      ];
-    }
     return memoryNewsData;
   } else {
     // Local development - use public folder
