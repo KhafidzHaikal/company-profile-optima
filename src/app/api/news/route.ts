@@ -96,35 +96,19 @@ export async function POST(req: NextRequest) {
       
       imageUrl = "";
       if (file && file instanceof File && file.size > 0) {
-        // Option 1: Save to public folder with UUID
-        const fileExtension = file.name.split('.').pop();
-        const fileName = `${uuidv4()}.${fileExtension}`;
-        
-        const publicDir = path.join(process.cwd(), 'public', 'articles');
-        if (!fs.existsSync(publicDir)) {
-          fs.mkdirSync(publicDir, { recursive: true });
-        }
-        
-        const filePath = path.join(publicDir, fileName);
         const arrayBuffer = await file.arrayBuffer();
         const buffer = Buffer.from(arrayBuffer);
+        const base64 = buffer.toString('base64');
+        const dataURI = `data:${file.type};base64,${base64}`;
         
-        if (!isVercel) {
-          // Local: save to public folder
-          fs.writeFileSync(filePath, buffer);
-          imageUrl = `/articles/${fileName}`;
-        } else {
-          // Vercel: use Cloudinary as fallback
-          const base64 = buffer.toString('base64');
-          const dataURI = `data:${file.type};base64,${base64}`;
-          
-          const result = await cloudinary.uploader.upload(dataURI, {
-            folder: 'optima-news',
-            resource_type: 'auto'
-          });
-          
-          imageUrl = result.secure_url;
-        }
+        const uuid = uuidv4();
+        const result = await cloudinary.uploader.upload(dataURI, {
+          folder: 'optima-news',
+          public_id: uuid,
+          resource_type: 'auto'
+        });
+        
+        imageUrl = result.secure_url;
       }
     }
 

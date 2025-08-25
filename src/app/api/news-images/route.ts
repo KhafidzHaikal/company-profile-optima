@@ -1,10 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
+import cloudinary from "@/lib/cloudinary";
 import { v4 as uuidv4 } from 'uuid';
-import fs from 'fs';
-import path from 'path';
 
 export async function POST(request: NextRequest) {
   try {
+    // Validate Cloudinary configuration
+    if (!process.env.CLOUDINARY_CLOUD_NAME || !process.env.CLOUDINARY_API_KEY || !process.env.CLOUDINARY_API_SECRET) {
+      console.error('Missing Cloudinary environment variables');
+      return NextResponse.json({ error: "Server configuration error" }, { status: 500 });
+    }
+
     const formData = await request.formData();
     const file = formData.get("file") as File;
 
@@ -17,27 +22,22 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Invalid file type" }, { status: 400 });
     }
 
-    // Generate UUID filename
-    const fileExtension = file.name.split('.').pop();
-    const fileName = `${uuidv4()}.${fileExtension}`;
-    
-    // Save to public/articles folder
-    const publicDir = path.join(process.cwd(), 'public', 'articles');
-    if (!fs.existsSync(publicDir)) {
-      fs.mkdirSync(publicDir, { recursive: true });
-    }
-    
-    const filePath = path.join(publicDir, fileName);
     const arrayBuffer = await file.arrayBuffer();
     const buffer = Buffer.from(arrayBuffer);
-    
-    fs.writeFileSync(filePath, buffer);
-    
-    const imageUrl = `/articles/${fileName}`;
+    const base64 = buffer.toString('base64');
+    const dataURI = `data:${file.type};base64,${base64}`;
+
+    const uuid = uuidv4();
+    const result = await cloudinary.uploader.upload(dataURI, {
+      folder: 'optima-articles',
+      public_id: uuid,
+      resource_type: 'auto'
+    });
 
     return NextResponse.json({ 
       success: true, 
-      imageUrl,
+      imageUrl: result.secure_url,
+      cloudinary_id: result.public_id,
       message: "Image uploaded successfully" 
     });
   } catch (error) {
