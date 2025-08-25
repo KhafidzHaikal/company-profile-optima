@@ -9,8 +9,10 @@ const SECRET_KEY: string = "12345abcdef"; // Change this to a strong secret key
 const SALT_ROUNDS = 10; // Recommended number of salt rounds
 const dataPath: string = path.join(
 	process.cwd(),
-	"src/app/api/data/data-user.json"
+	"public/data/data-user.json"
 );
+const isVercel = process.env.VERCEL === '1';
+let memoryUsersData: User[] = [];
 
 interface User {
 	id: number;
@@ -29,13 +31,37 @@ interface AuthRequest {
 }
 
 function readUsers(): User[] {
-	if (!fs.existsSync(dataPath)) return [];
-	const data = fs.readFileSync(dataPath, "utf-8").trim();
-	return data ? (JSON.parse(data) as User[]) : [];
+	if (isVercel) {
+		return memoryUsersData;
+	} else {
+		try {
+			const dataDir = path.dirname(dataPath);
+			if (!fs.existsSync(dataDir)) {
+				fs.mkdirSync(dataDir, { recursive: true });
+			}
+			if (!fs.existsSync(dataPath)) return [];
+			const data = fs.readFileSync(dataPath, "utf-8").trim();
+			return data ? (JSON.parse(data) as User[]) : [];
+		} catch {
+			return [];
+		}
+	}
 }
 
 function writeUsers(users: User[]): void {
-	fs.writeFileSync(dataPath, JSON.stringify(users, null, 2));
+	if (isVercel) {
+		memoryUsersData = users;
+	} else {
+		try {
+			const dataDir = path.dirname(dataPath);
+			if (!fs.existsSync(dataDir)) {
+				fs.mkdirSync(dataDir, { recursive: true });
+			}
+			fs.writeFileSync(dataPath, JSON.stringify(users, null, 2));
+		} catch (error) {
+			console.error('Failed to write users data:', error);
+		}
+	}
 }
 
 export async function POST(req: Request): Promise<Response> {

@@ -39,8 +39,14 @@ function readNewsData(): NewsData[] {
     }
     return memoryNewsData;
   } else {
-    // Local development - use file system
+    // Local development - use public folder
     try {
+      // Ensure directory exists
+      const dataDir = path.dirname(dataFile);
+      if (!fs.existsSync(dataDir)) {
+        fs.mkdirSync(dataDir, { recursive: true });
+      }
+      
       const data = fs.readFileSync(dataFile, "utf8");
       return JSON.parse(data);
     } catch {
@@ -54,8 +60,14 @@ function writeNewsData(data: NewsData[]) {
     // On Vercel, store in memory
     memoryNewsData = data;
   } else {
-    // Local development - write to file
+    // Local development - write to public folder
     try {
+      // Ensure directory exists
+      const dataDir = path.dirname(dataFile);
+      if (!fs.existsSync(dataDir)) {
+        fs.mkdirSync(dataDir, { recursive: true });
+      }
+      
       fs.writeFileSync(dataFile, JSON.stringify(data, null, 2));
     } catch (error) {
       console.error('Failed to write news data:', error);

@@ -21,6 +21,7 @@ export default function middleware(request: NextRequest) {
     pathname.startsWith("/uploads") ||
     pathname.startsWith("/articles") ||
     pathname.startsWith("/videos") ||
+    pathname.startsWith("/data") ||
     pathname.startsWith("/login-admin-optima") ||
     pathname.startsWith("/register-just-admin") ||
     pathname.startsWith("/dashboard") ||

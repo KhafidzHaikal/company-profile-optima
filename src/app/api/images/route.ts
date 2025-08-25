@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
 import cloudinary from "@/lib/cloudinary";
+import { v4 as uuidv4 } from 'uuid';
 
 interface ImageData {
   id: number;
@@ -9,19 +10,44 @@ interface ImageData {
   cloudinary_id?: string;
 }
 
-const dataFile = path.join(process.cwd(), "src/app/api/data/images.json");
+const dataFile = path.join(process.cwd(), "public/data/images.json");
+const isVercel = process.env.VERCEL === '1';
+let memoryImagesData: ImageData[] = [];
 
 function readImagesData() {
-  try {
-    const data = fs.readFileSync(dataFile, "utf8");
-    return JSON.parse(data);
-  } catch {
-    return [];
+  if (isVercel) {
+    if (memoryImagesData.length === 0) {
+      memoryImagesData = [];
+    }
+    return memoryImagesData;
+  } else {
+    try {
+      const dataDir = path.dirname(dataFile);
+      if (!fs.existsSync(dataDir)) {
+        fs.mkdirSync(dataDir, { recursive: true });
+      }
+      const data = fs.readFileSync(dataFile, "utf8");
+      return JSON.parse(data);
+    } catch {
+      return [];
+    }
   }
 }
 
 function writeImagesData(data: ImageData[]) {
-  fs.writeFileSync(dataFile, JSON.stringify(data, null, 2));
+  if (isVercel) {
+    memoryImagesData = data;
+  } else {
+    try {
+      const dataDir = path.dirname(dataFile);
+      if (!fs.existsSync(dataDir)) {
+        fs.mkdirSync(dataDir, { recursive: true });
+      }
+      fs.writeFileSync(dataFile, JSON.stringify(data, null, 2));
+    } catch (error) {
+      console.error('Failed to write images data:', error);
+    }
+  }
 }
 
 export async function GET() {
@@ -43,8 +69,10 @@ export async function POST(req: NextRequest) {
     const base64 = buffer.toString('base64');
     const dataURI = `data:${file.type};base64,${base64}`;
 
+    const uuid = uuidv4();
     const result = await cloudinary.uploader.upload(dataURI, {
       folder: 'optima-gallery',
+      public_id: uuid,
       resource_type: 'auto'
     });
 
