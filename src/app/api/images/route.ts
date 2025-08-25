@@ -1,6 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
 import cloudinary from "@/lib/cloudinary";
 import { v4 as uuidv4 } from 'uuid';
 
@@ -10,41 +8,65 @@ interface ImageData {
   cloudinary_id?: string;
 }
 
-const dataFile = path.join(process.cwd(), "public/data/images.json");
-const isVercel = process.env.VERCEL === '1';
-let memoryImagesData: ImageData[] = [];
+// In-memory storage
+let imagesData: ImageData[] = [
+  {
+    id: 2,
+    source: "/uploads/c36754bb-f3fb-47b1-9a5c-ae5ad23c15a1.png"
+  },
+  {
+    id: 3,
+    source: "/uploads/965c0dd5-a0bd-44d2-8408-45dd7ff4f1c5.png"
+  },
+  {
+    id: 4,
+    source: "/uploads/60188c25-819a-4a8d-b189-af132f7c89ef.png"
+  },
+  {
+    id: 5,
+    source: "/uploads/79067bfd-c26c-44ed-93c3-dc202ea72864.png"
+  },
+  {
+    id: 6,
+    source: "/uploads/def0e730-5695-4cb6-a719-2c893f9ac7ad.png"
+  },
+  {
+    id: 7,
+    source: "/uploads/b7ab53de-eafe-4c66-a15f-2869dd3d1008.png"
+  },
+  {
+    id: 8,
+    source: "/uploads/c60c910c-f248-400d-acd8-77810f5f76f5.png"
+  },
+  {
+    id: 9,
+    source: "/uploads/1833a08e-1e03-4b57-b237-795b0b2cd9a5.png"
+  },
+  {
+    id: 10,
+    source: "/uploads/7fcff089-924b-4a19-81c7-371c22af9dfc.png"
+  },
+  {
+    id: 11,
+    source: "/uploads/38605c26-d7f7-4203-8b37-3f59a2808329.png"
+  },
+  {
+    id: 12,
+    source: "/uploads/cbbb4588-1e43-4ad6-a0da-ce1c628a9920.png"
+  },
+  {
+    id: 13,
+    source: "https://res.cloudinary.com/dnj32ehjo/image/upload/v1756125587/optima-gallery/ildakcftq3xrn0ezocp8.png",
+    cloudinary_id: "optima-gallery/ildakcftq3xrn0ezocp8"
+  }
+];
 
 function readImagesData() {
-  if (isVercel) {
-    return memoryImagesData;
-  } else {
-    try {
-      const dataDir = path.dirname(dataFile);
-      if (!fs.existsSync(dataDir)) {
-        fs.mkdirSync(dataDir, { recursive: true });
-      }
-      const data = fs.readFileSync(dataFile, "utf8");
-      return JSON.parse(data);
-    } catch {
-      return [];
-    }
-  }
+  return imagesData;
 }
 
 function writeImagesData(data: ImageData[]) {
-  if (isVercel) {
-    memoryImagesData = data;
-  } else {
-    try {
-      const dataDir = path.dirname(dataFile);
-      if (!fs.existsSync(dataDir)) {
-        fs.mkdirSync(dataDir, { recursive: true });
-      }
-      fs.writeFileSync(dataFile, JSON.stringify(data, null, 2));
-    } catch (error) {
-      console.error('Failed to write images data:', error);
-    }
-  }
+  imagesData = data;
 }
 
 export async function GET() {

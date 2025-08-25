@@ -1,6 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
 import cloudinary from "@/lib/cloudinary";
 import { v4 as uuidv4 } from 'uuid';
 
@@ -15,11 +13,8 @@ interface NewsData {
   updatedAt: string;
 }
 
-const dataFile = path.join(process.cwd(), "public/data/news.json");
-const isVercel = process.env.VERCEL === '1';
-
-// In-memory storage for Vercel
-let memoryNewsData: NewsData[] = [
+// In-memory storage
+let newsData: NewsData[] = [
   {
     id: 1,
     title: "Abu Dhabi Cultural Tour Now Available",
@@ -32,43 +27,11 @@ let memoryNewsData: NewsData[] = [
 ];
 
 function readNewsData(): NewsData[] {
-  if (isVercel) {
-    return memoryNewsData;
-  } else {
-    // Local development - use public folder
-    try {
-      // Ensure directory exists
-      const dataDir = path.dirname(dataFile);
-      if (!fs.existsSync(dataDir)) {
-        fs.mkdirSync(dataDir, { recursive: true });
-      }
-      
-      const data = fs.readFileSync(dataFile, "utf8");
-      return JSON.parse(data);
-    } catch {
-      return [];
-    }
-  }
+  return newsData;
 }
 
 function writeNewsData(data: NewsData[]) {
-  if (isVercel) {
-    // On Vercel, store in memory
-    memoryNewsData = data;
-  } else {
-    // Local development - write to public folder
-    try {
-      // Ensure directory exists
-      const dataDir = path.dirname(dataFile);
-      if (!fs.existsSync(dataDir)) {
-        fs.mkdirSync(dataDir, { recursive: true });
-      }
-      
-      fs.writeFileSync(dataFile, JSON.stringify(data, null, 2));
-    } catch (error) {
-      console.error('Failed to write news data:', error);
-    }
-  }
+  newsData = data;
 }
 
 export async function GET() {

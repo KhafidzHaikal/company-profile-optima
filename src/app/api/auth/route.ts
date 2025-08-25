@@ -1,18 +1,21 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable prefer-const */
-import fs from "fs";
-import path from "path";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 
 const SECRET_KEY: string = "12345abcdef"; // Change this to a strong secret key
 const SALT_ROUNDS = 10; // Recommended number of salt rounds
-const dataPath: string = path.join(
-	process.cwd(),
-	"public/data/data-user.json"
-);
-const isVercel = process.env.VERCEL === '1';
-let memoryUsersData: User[] = [];
+
+// In-memory storage
+let usersData: User[] = [
+	{
+		id: 1,
+		username: "admin",
+		name: "Administrator",
+		email: "admin@optima.com",
+		password: "$2b$10$hmMdVaYgA0O7DYLYsIV7KudlOfLFjD.fq81WBrsdAqZeR.mKdyOYK" // password: password
+	}
+];
 
 
 
@@ -33,49 +36,11 @@ interface AuthRequest {
 }
 
 function readUsers(): User[] {
-	if (isVercel) {
-		// Initialize default admin user for Vercel
-		if (memoryUsersData.length === 0) {
-			memoryUsersData = [
-				{
-					id: 1,
-					username: "admin",
-					name: "Administrator",
-					email: "admin@optima.com",
-					password: "$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi" // password: password
-				}
-			];
-		}
-		return memoryUsersData;
-	} else {
-		try {
-			const dataDir = path.dirname(dataPath);
-			if (!fs.existsSync(dataDir)) {
-				fs.mkdirSync(dataDir, { recursive: true });
-			}
-			if (!fs.existsSync(dataPath)) return [];
-			const data = fs.readFileSync(dataPath, "utf-8").trim();
-			return data ? (JSON.parse(data) as User[]) : [];
-		} catch {
-			return [];
-		}
-	}
+	return usersData;
 }
 
 function writeUsers(users: User[]): void {
-	if (isVercel) {
-		memoryUsersData = users;
-	} else {
-		try {
-			const dataDir = path.dirname(dataPath);
-			if (!fs.existsSync(dataDir)) {
-				fs.mkdirSync(dataDir, { recursive: true });
-			}
-			fs.writeFileSync(dataPath, JSON.stringify(users, null, 2));
-		} catch (error) {
-			console.error('Failed to write users data:', error);
-		}
-	}
+	usersData = users;
 }
 
 export async function POST(req: Request): Promise<Response> {
