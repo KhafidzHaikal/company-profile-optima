@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
-import { v4 as uuid } from "uuid";
+import cloudinary from "@/lib/cloudinary";
 
 interface NewsData {
   id: number;
@@ -9,16 +9,12 @@ interface NewsData {
   content: string;
   excerpt: string;
   image: string;
+  cloudinary_id?: string;
   createdAt: string;
   updatedAt: string;
 }
 
-const articlesDir = path.join(process.cwd(), "public/articles");
 const dataFile = path.join(process.cwd(), "src/app/api/data/news.json");
-
-if (!fs.existsSync(articlesDir)) {
-  fs.mkdirSync(articlesDir, { recursive: true });
-}
 
 function readNewsData() {
   try {
@@ -40,25 +36,42 @@ export async function GET() {
 
 export async function POST(req: NextRequest) {
   try {
-    const formData = await req.formData();
-    const title = formData.get("title") as string;
-    const content = formData.get("content") as string;
-    const excerpt = formData.get("excerpt") as string;
-    const file = formData.get("image") as File;
+    const contentType = req.headers.get('content-type') || '';
+    let title: string, content: string, excerpt: string, imageUrl: string;
+    
+    if (contentType.includes('application/json')) {
+      // Handle JSON data with image URL from news-images API
+      const body = await req.json();
+      title = body.title;
+      content = body.content;
+      excerpt = body.excerpt;
+      imageUrl = body.image || '';
+    } else {
+      // Handle form data with file upload
+      const formData = await req.formData();
+      title = formData.get("title") as string;
+      content = formData.get("content") as string;
+      excerpt = formData.get("excerpt") as string;
+      const file = formData.get("image") as File;
+      
+      imageUrl = "";
+      if (file && file instanceof File && file.size > 0) {
+        const arrayBuffer = await file.arrayBuffer();
+        const buffer = Buffer.from(arrayBuffer);
+        const base64 = buffer.toString('base64');
+        const dataURI = `data:${file.type};base64,${base64}`;
+        
+        const result = await cloudinary.uploader.upload(dataURI, {
+          folder: 'optima-news',
+          resource_type: 'auto'
+        });
+        
+        imageUrl = result.secure_url;
+      }
+    }
 
     if (!title || !content || !excerpt) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
-    }
-
-    let imageUrl = "";
-    if (file && file instanceof File && file.size > 0) {
-      const arrayBuffer = await file.arrayBuffer();
-      const buffer = Buffer.from(arrayBuffer);
-      const fileExt = file.name.split(".").pop();
-      const fileName = `${uuid()}.${fileExt}`;
-      const filePath = path.join(articlesDir, fileName);
-      imageUrl = `/articles/${fileName}`;
-      fs.writeFileSync(filePath, buffer);
     }
 
     const news = readNewsData();
@@ -76,7 +89,8 @@ export async function POST(req: NextRequest) {
     writeNewsData(news);
 
     return NextResponse.json(newNews, { status: 201 });
-  } catch {
+  } catch (error) {
+    console.error('News creation error:', error);
     return NextResponse.json({ error: "Failed to create news" }, { status: 500 });
   }
 }
@@ -97,11 +111,30 @@ export async function DELETE(req: NextRequest) {
       return NextResponse.json({ error: "News not found" }, { status: 404 });
     }
 
+    const newsItem = news[newsIndex];
+    
+    // Delete from Cloudinary if image exists
+    if (newsItem.image && newsItem.image.includes('cloudinary.com')) {
+      try {
+        const urlParts = newsItem.image.split('/');
+        const uploadIndex = urlParts.findIndex((part: string) => part === 'upload');
+        if (uploadIndex !== -1) {
+          const pathAfterUpload = urlParts.slice(uploadIndex + 2).join('/');
+          const publicId = pathAfterUpload.replace(/\.[^/.]+$/, '');
+          console.log('Deleting from Cloudinary:', publicId);
+          await cloudinary.uploader.destroy(publicId);
+        }
+      } catch (cloudinaryError) {
+        console.error('Cloudinary delete error:', cloudinaryError);
+      }
+    }
+
     news.splice(newsIndex, 1);
     writeNewsData(news);
 
     return NextResponse.json({ message: "News deleted successfully" });
-  } catch {
+  } catch (error) {
+    console.error('Delete error:', error);
     return NextResponse.json({ error: "Failed to delete news" }, { status: 500 });
   }
 }

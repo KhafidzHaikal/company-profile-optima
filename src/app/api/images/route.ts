@@ -1,19 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
-import { v4 as uuid } from "uuid";
+import cloudinary from "@/lib/cloudinary";
 
 interface ImageData {
   id: number;
   source: string;
+  cloudinary_id?: string;
 }
 
-const uploadDir = path.join(process.cwd(), "public/uploads");
 const dataFile = path.join(process.cwd(), "src/app/api/data/images.json");
-
-if (!fs.existsSync(uploadDir)) {
-  fs.mkdirSync(uploadDir, { recursive: true });
-}
 
 function readImagesData() {
   try {
@@ -34,33 +30,39 @@ export async function GET() {
 }
 
 export async function POST(req: NextRequest) {
-  const formData = await req.formData();
-  const file = formData.get("file") as File;
+  try {
+    const formData = await req.formData();
+    const file = formData.get("file") as File;
 
-  if (!file) {
-    return NextResponse.json({ error: "No file uploaded" }, { status: 400 });
+    if (!file) {
+      return NextResponse.json({ error: "No file uploaded" }, { status: 400 });
+    }
+
+    const arrayBuffer = await file.arrayBuffer();
+    const buffer = Buffer.from(arrayBuffer);
+    const base64 = buffer.toString('base64');
+    const dataURI = `data:${file.type};base64,${base64}`;
+
+    const result = await cloudinary.uploader.upload(dataURI, {
+      folder: 'optima-gallery',
+      resource_type: 'auto'
+    });
+
+    const existing = readImagesData();
+    const newImage = {
+      id: existing.length > 0 ? Math.max(...existing.map((img: ImageData) => img.id)) + 1 : 1,
+      source: result.secure_url,
+      cloudinary_id: result.public_id
+    };
+
+    const updated = [...existing, newImage];
+    writeImagesData(updated);
+
+    return NextResponse.json(newImage, { status: 201 });
+  } catch (error) {
+    console.error('Upload error:', error);
+    return NextResponse.json({ error: "Upload failed" }, { status: 500 });
   }
-
-  const arrayBuffer = await file.arrayBuffer();
-  const buffer = Buffer.from(arrayBuffer);
-
-  const fileExt = file.name.split(".").pop();
-  const fileName = `${uuid()}.${fileExt}`;
-  const filePath = path.join(uploadDir, fileName);
-  const fileUrl = `/uploads/${fileName}`;
-
-  fs.writeFileSync(filePath, buffer);
-
-  const existing = readImagesData();
-  const newImage = {
-    id: existing.length > 0 ? Math.max(...existing.map((img: ImageData) => img.id)) + 1 : 1,
-    source: fileUrl,
-  };
-
-  const updated = [...existing, newImage];
-  writeImagesData(updated);
-
-  return NextResponse.json(newImage, { status: 201 });
 }
 
 export async function DELETE(req: NextRequest) {
@@ -79,17 +81,30 @@ export async function DELETE(req: NextRequest) {
       return NextResponse.json({ error: "Image not found" }, { status: 404 });
     }
 
-    // Remove file from filesystem
-    const imagePath = path.join(process.cwd(), "public", images[imageIndex].source);
-    if (fs.existsSync(imagePath)) {
-      fs.unlinkSync(imagePath);
+    const image = images[imageIndex];
+    
+    // Delete from Cloudinary
+    if (image.source && image.source.includes('cloudinary.com')) {
+      try {
+        const urlParts = image.source.split('/');
+        const uploadIndex = urlParts.findIndex((part: string) => part === 'upload');
+        if (uploadIndex !== -1) {
+          const pathAfterUpload = urlParts.slice(uploadIndex + 2).join('/');
+          const publicId = pathAfterUpload.replace(/\.[^/.]+$/, '');
+          console.log('Deleting from Cloudinary:', publicId);
+          await cloudinary.uploader.destroy(publicId);
+        }
+      } catch (cloudinaryError) {
+        console.error('Cloudinary delete error:', cloudinaryError);
+      }
     }
 
     images.splice(imageIndex, 1);
     writeImagesData(images);
 
     return NextResponse.json({ message: "Image deleted successfully" });
-  } catch {
+  } catch (error) {
+    console.error('Delete error:', error);
     return NextResponse.json({ error: "Failed to delete image" }, { status: 500 });
   }
 }

@@ -235,8 +235,8 @@ export default function DashboardPage() {
 						<Table>
 						<TableHeader>
 							<TableRow>
-								<TableHead className="w-[150px]">Preview</TableHead>
-								<TableHead>Source</TableHead>
+								<TableHead className="w-[350px]">Preview</TableHead>
+								{/* <TableHead>Source</TableHead> */}
 								<TableHead className="text-right">Action</TableHead>
 							</TableRow>
 						</TableHeader>
@@ -252,7 +252,7 @@ export default function DashboardPage() {
 											className="rounded-md object-cover"
 										/>
 									</TableCell>
-									<TableCell>{img.source}</TableCell>
+									{/* <TableCell>{img.source}</TableCell> */}
 									<TableCell className="text-right">
 										<Button
 											variant="destructive"

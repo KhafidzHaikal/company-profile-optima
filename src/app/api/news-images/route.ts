@@ -1,14 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
-import { v4 as uuid } from "uuid";
-
-const articlesDir = path.join(process.cwd(), "public/articles");
-
-// Ensure directory exists
-if (!fs.existsSync(articlesDir)) {
-  fs.mkdirSync(articlesDir, { recursive: true });
-}
+import cloudinary from "@/lib/cloudinary";
 
 export async function POST(request: NextRequest) {
   try {
@@ -26,17 +17,18 @@ export async function POST(request: NextRequest) {
 
     const arrayBuffer = await file.arrayBuffer();
     const buffer = Buffer.from(arrayBuffer);
+    const base64 = buffer.toString('base64');
+    const dataURI = `data:${file.type};base64,${base64}`;
 
-    const fileExt = file.name.split(".").pop();
-    const fileName = `${uuid()}.${fileExt}`;
-    const filePath = path.join(articlesDir, fileName);
-    const imageUrl = `/articles/${fileName}`;
-
-    fs.writeFileSync(filePath, buffer);
+    const result = await cloudinary.uploader.upload(dataURI, {
+      folder: 'optima-articles',
+      resource_type: 'auto'
+    });
 
     return NextResponse.json({ 
       success: true, 
-      imageUrl,
+      imageUrl: result.secure_url,
+      cloudinary_id: result.public_id,
       message: "Image uploaded successfully" 
     });
   } catch (error) {
