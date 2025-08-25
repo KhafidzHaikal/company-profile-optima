@@ -1,16 +1,59 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
+import { v4 as uuid } from "uuid";
+
+const uploadDir = path.join(process.cwd(), "public/uploads");
+const dataFile = path.join(process.cwd(), "src/app/api/data/images.json");
+
+if (!fs.existsSync(uploadDir)) {
+  fs.mkdirSync(uploadDir, { recursive: true });
+}
+
+function readImagesData() {
+  try {
+    const data = fs.readFileSync(dataFile, "utf8");
+    return JSON.parse(data);
+  } catch {
+    return [];
+  }
+}
+
+function writeImagesData(data: any[]) {
+  fs.writeFileSync(dataFile, JSON.stringify(data, null, 2));
+}
 
 export async function GET() {
-  try {
-    const filePath = path.join(process.cwd(), "src/app/api/data/images.json");
-    const fileContents = fs.readFileSync(filePath, "utf8");
-    const images = JSON.parse(fileContents);
-    
-    return NextResponse.json(images);
-  } catch (error) {
-    console.error("Error reading images:", error);
-    return NextResponse.json({ error: "Failed to load images" }, { status: 500 });
+  const images = readImagesData();
+  return NextResponse.json(images);
+}
+
+export async function POST(req: NextRequest) {
+  const formData = await req.formData();
+  const file = formData.get("file") as File;
+
+  if (!file) {
+    return NextResponse.json({ error: "No file uploaded" }, { status: 400 });
   }
+
+  const arrayBuffer = await file.arrayBuffer();
+  const buffer = Buffer.from(arrayBuffer);
+
+  const fileExt = file.name.split(".").pop();
+  const fileName = `${uuid()}.${fileExt}`;
+  const filePath = path.join(uploadDir, fileName);
+  const fileUrl = `/uploads/${fileName}`;
+
+  fs.writeFileSync(filePath, buffer);
+
+  const existing = readImagesData();
+  const newImage = {
+    id: existing.length > 0 ? Math.max(...existing.map((img: any) => img.id)) + 1 : 1,
+    source: fileUrl,
+  };
+
+  const updated = [...existing, newImage];
+  writeImagesData(updated);
+
+  return NextResponse.json(newImage, { status: 201 });
 }
