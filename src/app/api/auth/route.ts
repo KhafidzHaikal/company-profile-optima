@@ -14,6 +14,19 @@ const dataPath: string = path.join(
 const isVercel = process.env.VERCEL === '1';
 let memoryUsersData: User[] = [];
 
+// Initialize with default admin user for Vercel
+if (isVercel && memoryUsersData.length === 0) {
+	memoryUsersData = [
+		{
+			id: 1,
+			username: "admin",
+			name: "Administrator",
+			email: "admin@optima.com",
+			password: "$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi" // password: password
+		}
+	];
+}
+
 interface User {
 	id: number;
 	username: string;
@@ -32,6 +45,18 @@ interface AuthRequest {
 
 function readUsers(): User[] {
 	if (isVercel) {
+		// Ensure default admin user exists
+		if (memoryUsersData.length === 0) {
+			memoryUsersData = [
+				{
+					id: 1,
+					username: "admin",
+					name: "Administrator",
+					email: "admin@optima.com",
+					password: "$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi" // password: password
+				}
+			];
+		}
 		return memoryUsersData;
 	} else {
 		try {
