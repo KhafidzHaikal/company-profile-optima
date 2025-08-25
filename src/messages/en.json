@@ -307,7 +307,11 @@
     "handling": "Handling & Coordination",
     "handlingDetail": "Entrance tickets, scheduling, small souvenir, digital itinerary",
     "totalEstimation": "Total Estimation"
-  }
+  },
 
+  "news": "News",
+  "news-subtitle": "Stay updated with the latest news and updates from Optima Travel",
+  "read-more": "Read More",
+  "back": "Back"
 
 }

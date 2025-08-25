@@ -100,6 +100,11 @@ const Navbar = () => {
 									<Link href="/portfolio">{t("portfolio")}</Link>
 								</NavigationMenuLink>
 							</NavigationMenuItem>
+							<NavigationMenuItem>
+								<NavigationMenuLink asChild>
+									<Link href="/news">{t("news")}</Link>
+								</NavigationMenuLink>
+							</NavigationMenuItem>
 						</NavigationMenuList>
 					</NavigationMenu>
 

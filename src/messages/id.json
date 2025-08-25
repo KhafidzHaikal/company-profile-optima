@@ -295,7 +295,11 @@
     "handling": "Handling & Koordinasi",
     "handlingDetail": "Tiket masuk, penjadwalan, souvenir kecil, digital itinerary",
     "totalEstimation": "Total"
-  }
+  },
 
+  "news": "Berita",
+  "news-subtitle": "Tetap update dengan berita dan informasi terbaru dari Optima Travel",
+  "read-more": "Baca Selengkapnya",
+  "back": "Kembali"
 
 }

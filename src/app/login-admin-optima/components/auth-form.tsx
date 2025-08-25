@@ -64,11 +64,11 @@ export function LoginForm({
 	}
 	return (
 		<div className={cn("flex flex-col gap-6", className)} {...props}>
-			<Card>
-				<CardHeader>
-					<CardTitle className="text-2xl">Login</CardTitle>
+			<Card className="shadow-xl border-0 bg-card/50 backdrop-blur-sm">
+				<CardHeader className="text-center">
+					<CardTitle className="text-2xl font-bold">Sign In</CardTitle>
 					<CardDescription>
-						Enter your username below to login to your account
+						Enter your credentials to access the admin dashboard
 					</CardDescription>
 				</CardHeader>
 				<CardContent>
@@ -107,8 +107,8 @@ export function LoginForm({
 								</div>
 							</div>
 
-							<Button type="submit" className="w-full">
-								Login
+							<Button type="submit" className="w-full bg-yellow-400 hover:bg-yellow-500 text-black font-semibold">
+								Sign In
 							</Button>
 						</div>
 					</form>
