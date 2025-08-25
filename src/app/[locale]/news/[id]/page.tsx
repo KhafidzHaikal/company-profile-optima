@@ -20,15 +20,15 @@ type Props = {
   params?: Promise<{ locale: string; id: string }>;
 };
 
-async function getNews(): Promise<NewsItem[]> {
+async function getNewsById(id: string): Promise<NewsItem | null> {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/news`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'https://www.newoptimatourism.com'}/api/news?id=${id}`, {
       cache: 'no-store'
     });
-    if (!res.ok) throw new Error('Failed to fetch');
+    if (!res.ok) return null;
     return res.json();
   } catch {
-    return [];
+    return null;
   }
 }
 
@@ -38,8 +38,7 @@ export default async function NewsDetailPage({ params }: Props) {
   setRequestLocale(locale);
   const t = await getTranslations({ locale });
 
-  const newsData = await getNews();
-  const news = newsData.find(item => item.id === parseInt(id));
+  const news = await getNewsById(id);
 
   if (!news) {
     return (

@@ -53,8 +53,26 @@ async function writeNewsData(data: NewsData[]) {
   }
 }
 
-export async function GET() {
+export async function GET(req: NextRequest) {
+  const { searchParams } = new URL(req.url);
+  const id = searchParams.get('id');
+  
   const news = await readNewsData();
+  
+  if (id) {
+    const newsId = parseInt(id);
+    if (isNaN(newsId)) {
+      return NextResponse.json({ error: "Invalid ID" }, { status: 400 });
+    }
+    
+    const newsItem = news.find((item: NewsData) => item.id === newsId);
+    if (!newsItem) {
+      return NextResponse.json({ error: "News not found" }, { status: 404 });
+    }
+    
+    return NextResponse.json(newsItem);
+  }
+  
   return NextResponse.json(news);
 }
 
