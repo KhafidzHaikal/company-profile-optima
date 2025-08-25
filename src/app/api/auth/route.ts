@@ -155,3 +155,15 @@ export async function GET(req: Request): Promise<Response> {
 		);
 	}
 }
+
+export async function OPTIONS(): Promise<Response> {
+	return new Response(null, {
+		status: 200,
+		headers: {
+			'Access-Control-Allow-Origin': '*',
+			'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+			'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With',
+			'Access-Control-Max-Age': '86400',
+		},
+	});
+}
