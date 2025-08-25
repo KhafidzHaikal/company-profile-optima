@@ -1,6 +1,5 @@
 "use client";
 
-import { useUser } from "@/components/context/UserContext";
 import { AppSidebar } from "@/components/sidebar/SidebarAdmin";
 import {
   Breadcrumb,
