@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import {
 	NavigationMenu,
 	NavigationMenuContent,
@@ -17,32 +17,33 @@ import Image from "next/image";
 import { HumburgerButton } from "../sidebar/Sidebar";
 import { cn } from "@/lib/utils";
 
-const components: { title: string; href: string; description: string }[] = [
-	{
-		title: "Destination Page",
-		href: "/destination",
-		description: "Destination",
-	},
-	{
-		title: "Abu Dhabi",
-		href: "/destination/abu-dhabi",
-		description: "Abu Dhabi Tourism",
-	},
-	{
-		title: "Dubai",
-		href: "/destination/dubai",
-		description: "Dubai Tourism",
-	},
-];
-
 const Navbar = () => {
 	const t = useTranslations();
+	const locale = useLocale();
+
+	const components: { title: string; href: string; description: string }[] = [
+		{
+			title: "Destination Page",
+			href: `/${locale}/destination`,
+			description: "Destination",
+		},
+		{
+			title: "Abu Dhabi",
+			href: `/${locale}/destination/abu-dhabi`,
+			description: "Abu Dhabi Tourism",
+		},
+		{
+			title: "Dubai",
+			href: `/${locale}/destination/dubai`,
+			description: "Dubai Tourism",
+		},
+	];
 
 	return (
 		<>
 			{/* Mobile Navbar */}
 			<nav className="flex z-50 fixed w-full top-0 bg-background/70 backdrop-blur-sm shadow-sm items-center justify-between p-4 lg:hidden">
-				<Link href="/" aria-label="Optima Logo">
+				<Link href={`/${locale}`} aria-label="Optima Logo">
 					<Image
 						src="/images/logo.png"
 						alt="Optima Logo"
@@ -57,7 +58,7 @@ const Navbar = () => {
 			{/* Desktop Navbar */}
 			<nav className="hidden lg:flex fixed top-0 z-50 w-full bg-background/70 backdrop-blur-sm shadow-sm">
 				<div className="container mx-12 lg:mx-32 py-2 flex items-center justify-between">
-					<Link href="/" aria-label="Optima Logo">
+					<Link href={`/${locale}`} aria-label="Optima Logo">
 						<Image
 							src="/images/logo.png"
 							alt="Optima Logo"
@@ -71,13 +72,13 @@ const Navbar = () => {
 						<NavigationMenuList>
 							<NavigationMenuItem>
 								<NavigationMenuLink asChild>
-									<Link href="/">{t("home")}</Link>
+									<Link href={`/${locale}`}>{t("home")}</Link>
 								</NavigationMenuLink>
 							</NavigationMenuItem>
 
 							<NavigationMenuItem>
 								<NavigationMenuLink asChild>
-									<Link href="/package">{t("package")}</Link>
+									<Link href={`/${locale}/package`}>{t("package")}</Link>
 								</NavigationMenuLink>
 							</NavigationMenuItem>
 							<NavigationMenuItem>
@@ -97,12 +98,12 @@ const Navbar = () => {
 							</NavigationMenuItem>
 							<NavigationMenuItem>
 								<NavigationMenuLink asChild>
-									<Link href="/portfolio">{t("portfolio")}</Link>
+									<Link href={`/${locale}/portfolio`}>{t("portfolio")}</Link>
 								</NavigationMenuLink>
 							</NavigationMenuItem>
 							<NavigationMenuItem>
 								<NavigationMenuLink asChild>
-									<Link href="/news">{t("news")}</Link>
+									<Link href={`/${locale}/news`}>{t("news")}</Link>
 								</NavigationMenuLink>
 							</NavigationMenuItem>
 						</NavigationMenuList>

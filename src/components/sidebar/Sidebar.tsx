@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -26,6 +26,7 @@ import { ModeToggle } from "../button/ButtonTheme";
 
 export function HumburgerButton() {
   const t = useTranslations();
+  const locale = useLocale();
 
   return (
     <Sheet>
@@ -45,13 +46,13 @@ export function HumburgerButton() {
 
           <nav className="flex flex-col gap-3">
             <Link
-              href="/"
+              href={`/${locale}`}
               className="text-base font-medium text-muted-foreground hover:text-primary transition-colors"
             >
               {t("home")}
             </Link>
             <Link
-              href="/package"
+              href={`/${locale}/package`}
               className="text-base font-medium text-muted-foreground hover:text-primary transition-colors"
             >
               {t("package")}
@@ -68,17 +69,17 @@ export function HumburgerButton() {
               <DropdownMenuContent side="right" className="w-56">
                 <DropdownMenuSeparator />
                 <DropdownMenuItem asChild>
-                  <Link href="/destination" className="w-full px-2 py-1 text-sm">
+                  <Link href={`/${locale}/destination`} className="w-full px-2 py-1 text-sm">
                     Destination
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link href="/destination/abu-dhabi" className="w-full px-2 py-1 text-sm">
+                  <Link href={`/${locale}/destination/abu-dhabi`} className="w-full px-2 py-1 text-sm">
                     Abu Dhabi
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link href="/destination/dubai" className="w-full px-2 py-1 text-sm">
+                  <Link href={`/${locale}/destination/dubai`} className="w-full px-2 py-1 text-sm">
                     Dubai
                   </Link>
                 </DropdownMenuItem>
@@ -86,10 +87,16 @@ export function HumburgerButton() {
             </DropdownMenu>
 
             <Link
-              href="/portfolio"
+              href={`/${locale}/portfolio`}
               className="text-base font-medium text-muted-foreground hover:text-primary transition-colors"
             >
               {t("portfolio")}
+            </Link>
+            <Link
+              href={`/${locale}/news`}
+              className="text-base font-medium text-muted-foreground hover:text-primary transition-colors"
+            >
+              {t("news")}
             </Link>
           </nav>
         </div>
