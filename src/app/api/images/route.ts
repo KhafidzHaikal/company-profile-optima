@@ -95,6 +95,12 @@ export async function GET() {
 
 export async function POST(req: NextRequest) {
   try {
+    // Validate Cloudinary configuration
+    if (!process.env.CLOUDINARY_CLOUD_NAME || !process.env.CLOUDINARY_API_KEY || !process.env.CLOUDINARY_API_SECRET) {
+      console.error('Missing Cloudinary environment variables');
+      return NextResponse.json({ error: "Server configuration error" }, { status: 500 });
+    }
+
     const formData = await req.formData();
     const file = formData.get("file") as File;
 
