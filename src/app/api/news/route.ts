@@ -81,6 +81,31 @@ export async function POST(req: NextRequest) {
   }
 }
 
+export async function DELETE(req: NextRequest) {
+  try {
+    const url = new URL(req.url);
+    const id = url.searchParams.get('id');
+    
+    if (!id) {
+      return NextResponse.json({ error: "ID is required" }, { status: 400 });
+    }
+
+    const news = readNewsData();
+    const newsIndex = news.findIndex((n: NewsData) => n.id === parseInt(id));
+    
+    if (newsIndex === -1) {
+      return NextResponse.json({ error: "News not found" }, { status: 404 });
+    }
+
+    news.splice(newsIndex, 1);
+    writeNewsData(news);
+
+    return NextResponse.json({ message: "News deleted successfully" });
+  } catch {
+    return NextResponse.json({ error: "Failed to delete news" }, { status: 500 });
+  }
+}
+
 export async function OPTIONS() {
   return new Response(null, {
     status: 200,

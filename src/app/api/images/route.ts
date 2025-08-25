@@ -63,6 +63,37 @@ export async function POST(req: NextRequest) {
   return NextResponse.json(newImage, { status: 201 });
 }
 
+export async function DELETE(req: NextRequest) {
+  try {
+    const url = new URL(req.url);
+    const id = url.searchParams.get('id');
+    
+    if (!id) {
+      return NextResponse.json({ error: "ID is required" }, { status: 400 });
+    }
+
+    const images = readImagesData();
+    const imageIndex = images.findIndex((img: ImageData) => img.id === parseInt(id));
+    
+    if (imageIndex === -1) {
+      return NextResponse.json({ error: "Image not found" }, { status: 404 });
+    }
+
+    // Remove file from filesystem
+    const imagePath = path.join(process.cwd(), "public", images[imageIndex].source);
+    if (fs.existsSync(imagePath)) {
+      fs.unlinkSync(imagePath);
+    }
+
+    images.splice(imageIndex, 1);
+    writeImagesData(images);
+
+    return NextResponse.json({ message: "Image deleted successfully" });
+  } catch {
+    return NextResponse.json({ error: "Failed to delete image" }, { status: 500 });
+  }
+}
+
 export async function OPTIONS() {
   return new Response(null, {
     status: 200,
