@@ -1,4 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
+import fs from "fs";
+import path from "path";
 
 type NewsItem = {
   id: number;
@@ -10,16 +12,29 @@ type NewsItem = {
   updatedAt: string;
 };
 
-// In-memory storage (will reset on deployment)
-// For production, use a database like Vercel Postgres, MongoDB, etc.
-let newsData: NewsItem[] = [];
+const newsDataFile = path.join(process.cwd(), "public/articles/news-data.json");
+const articlesDir = path.join(process.cwd(), "public/articles");
+
+// Ensure directory exists
+if (!fs.existsSync(articlesDir)) {
+  fs.mkdirSync(articlesDir, { recursive: true });
+}
 
 function readNewsData(): NewsItem[] {
-  return newsData;
+  try {
+    if (!fs.existsSync(newsDataFile)) {
+      fs.writeFileSync(newsDataFile, JSON.stringify([]));
+      return [];
+    }
+    const data = fs.readFileSync(newsDataFile, "utf8");
+    return JSON.parse(data);
+  } catch {
+    return [];
+  }
 }
 
 function writeNewsData(data: NewsItem[]) {
-  newsData = data;
+  fs.writeFileSync(newsDataFile, JSON.stringify(data, null, 2));
 }
 
 export async function GET() {
