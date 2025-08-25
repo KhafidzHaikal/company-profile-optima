@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import fs from "fs/promises";
 import cloudinary from "@/lib/cloudinary";
 import { v4 as uuidv4 } from 'uuid';
 
@@ -13,29 +14,25 @@ interface NewsData {
   updatedAt: string;
 }
 
-// In-memory storage
-let newsData: NewsData[] = [
-  {
-    id: 1,
-    title: "Abu Dhabi Cultural Tour Now Available",
-    content: "Experience the rich culture and heritage of Abu Dhabi with our specially curated cultural tour package.",
-    excerpt: "Discover Abu Dhabi's rich culture and heritage with our new cultural tour package.",
-    image: "/articles/f2e0c84e-7086-4575-b2fd-239fc5a90c87.png",
-    createdAt: "2024-01-10T14:30:00Z",
-    updatedAt: "2024-01-10T14:30:00Z"
+async function readNewsData() {
+  try {
+    const data = await fs.readFile(process.cwd() + '/src/app/api/data/news.json', 'utf8');
+    return JSON.parse(data);
+  } catch {
+    return [];
   }
-];
-
-function readNewsData(): NewsData[] {
-  return newsData;
 }
 
-function writeNewsData(data: NewsData[]) {
-  newsData = data;
+async function writeNewsData(data: NewsData[]) {
+  try {
+    await fs.writeFile(process.cwd() + '/src/app/api/data/news.json', JSON.stringify(data, null, 2));
+  } catch (error) {
+    console.error('Write error:', error);
+  }
 }
 
 export async function GET() {
-  const news = readNewsData();
+  const news = await readNewsData();
   return NextResponse.json(news);
 }
 
@@ -87,7 +84,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 
-    const news = readNewsData();
+    const news = await readNewsData();
     const newNews = {
       id: news.length > 0 ? Math.max(...news.map((n: NewsData) => n.id)) + 1 : 1,
       title,
@@ -99,7 +96,7 @@ export async function POST(req: NextRequest) {
     };
 
     news.push(newNews);
-    writeNewsData(news);
+    await writeNewsData(news);
 
     return NextResponse.json(newNews, { status: 201 });
   } catch (error) {
@@ -117,7 +114,7 @@ export async function DELETE(req: NextRequest) {
       return NextResponse.json({ error: "ID is required" }, { status: 400 });
     }
 
-    const news = readNewsData();
+    const news = await readNewsData();
     const newsIndex = news.findIndex((n: NewsData) => n.id === parseInt(id));
     
     if (newsIndex === -1) {
@@ -143,7 +140,7 @@ export async function DELETE(req: NextRequest) {
     }
 
     news.splice(newsIndex, 1);
-    writeNewsData(news);
+    await writeNewsData(news);
 
     return NextResponse.json({ message: "News deleted successfully" });
   } catch (error) {

@@ -1,21 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable prefer-const */
+import fs from "fs/promises";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 
 const SECRET_KEY: string = "12345abcdef"; // Change this to a strong secret key
 const SALT_ROUNDS = 10; // Recommended number of salt rounds
 
-// In-memory storage
-let usersData: User[] = [
-	{
-		id: 1,
-		username: "admin",
-		name: "Administrator",
-		email: "admin@optima.com",
-		password: "$2b$10$hmMdVaYgA0O7DYLYsIV7KudlOfLFjD.fq81WBrsdAqZeR.mKdyOYK" // password: password
-	}
-];
 
 
 
@@ -35,18 +26,27 @@ interface AuthRequest {
 	action: "login" | "register";
 }
 
-function readUsers(): User[] {
-	return usersData;
+async function readUsers(): Promise<User[]> {
+	try {
+		const data = await fs.readFile(process.cwd() + '/src/app/api/data/data-user.json', 'utf8');
+		return data ? (JSON.parse(data) as User[]) : [];
+	} catch {
+		return [];
+	}
 }
 
-function writeUsers(users: User[]): void {
-	usersData = users;
+async function writeUsers(users: User[]): Promise<void> {
+	try {
+		await fs.writeFile(process.cwd() + '/src/app/api/data/data-user.json', JSON.stringify(users, null, 2));
+	} catch (error) {
+		console.error('Write error:', error);
+	}
 }
 
 export async function POST(req: Request): Promise<Response> {
 	const { username, password, name, email, action } =
 		(await req.json()) as AuthRequest;
-	let users = readUsers();
+	let users = await readUsers();
 
 	if (action === "login") {
 		const user = users.find((u) => u.username === username);
@@ -115,7 +115,7 @@ export async function POST(req: Request): Promise<Response> {
 		};
 
 		users.push(newUser);
-		writeUsers(users);
+		await writeUsers(users);
 
 		return new Response(
 			JSON.stringify({
