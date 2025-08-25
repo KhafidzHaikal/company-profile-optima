@@ -11,7 +11,31 @@ import {
 import Image from "next/image";
 import Footer from "@/components/footer/Footer";
 import { setRequestLocale, getTranslations } from "next-intl/server";
-import { getLatestNews } from "@/lib/news";
+
+type NewsItem = {
+	id: number;
+	title: string;
+	content: string;
+	excerpt: string;
+	image: string;
+	createdAt: string;
+	updatedAt: string;
+};
+
+async function getLatestNews(): Promise<NewsItem[]> {
+	try {
+		const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/news`, {
+			cache: 'no-store'
+		});
+		if (!res.ok) throw new Error('Failed to fetch');
+		const news = await res.json();
+		return news
+			.sort((a: NewsItem, b: NewsItem) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+			.slice(0, 3);
+	} catch {
+		return [];
+	}
+}
 
 type Props = {
 	params?: Promise<{ locale: string }>;
@@ -389,7 +413,7 @@ export default async function Home({ params }: Props) {
 					</Link>
 				</div>
 				<div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-					{getLatestNews(3).map((item) => (
+					{(await getLatestNews()).map((item) => (
 						<div key={item.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
 							{item.image && (
 								<div className="relative h-48 w-full">

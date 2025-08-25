@@ -5,11 +5,32 @@ import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
-import { getNewsById } from "@/lib/news";
+
+type NewsItem = {
+  id: number;
+  title: string;
+  content: string;
+  excerpt: string;
+  image: string;
+  createdAt: string;
+  updatedAt: string;
+};
 
 type Props = {
   params?: Promise<{ locale: string; id: string }>;
 };
+
+async function getNews(): Promise<NewsItem[]> {
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/news`, {
+      cache: 'no-store'
+    });
+    if (!res.ok) throw new Error('Failed to fetch');
+    return res.json();
+  } catch {
+    return [];
+  }
+}
 
 export default async function NewsDetailPage({ params }: Props) {
   const resolvedParams = params ? await params : { locale: "en", id: "1" };
@@ -17,7 +38,8 @@ export default async function NewsDetailPage({ params }: Props) {
   setRequestLocale(locale);
   const t = await getTranslations({ locale });
 
-  const news = getNewsById(parseInt(id));
+  const newsData = await getNews();
+  const news = newsData.find(item => item.id === parseInt(id));
 
   if (!news) {
     return (

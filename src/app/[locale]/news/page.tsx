@@ -4,11 +4,32 @@ import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
-import { getNewsData } from "@/lib/news";
+
+type NewsItem = {
+  id: number;
+  title: string;
+  content: string;
+  excerpt: string;
+  image: string;
+  createdAt: string;
+  updatedAt: string;
+};
 
 type Props = {
   params?: Promise<{ locale: string }>;
 };
+
+async function getNews(): Promise<NewsItem[]> {
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/news`, {
+      cache: 'no-store'
+    });
+    if (!res.ok) throw new Error('Failed to fetch');
+    return res.json();
+  } catch {
+    return [];
+  }
+}
 
 export default async function NewsPage({ params }: Props) {
   const resolvedParams = params ? await params : { locale: "en" };
@@ -16,7 +37,7 @@ export default async function NewsPage({ params }: Props) {
   setRequestLocale(locale);
   const t = await getTranslations({ locale });
 
-  const newsData = getNewsData();
+  const newsData = await getNews();
 
   return (
     <div className="min-h-screen flex flex-col">
