@@ -47,7 +47,6 @@ type ImageItem = {
 };
 
 export default function DashboardPage() {
-	const user = useUser();
 	const [file, setFile] = useState<File | null>(null);
 	const [isUploading, setIsUploading] = useState(false);
 	const [images, setImages] = useState<ImageItem[]>([]);

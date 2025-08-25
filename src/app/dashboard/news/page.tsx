@@ -50,7 +50,6 @@ type NewsItem = {
 };
 
 export default function NewsAdminPage() {
-  const user = useUser();
   const [news, setNews] = useState<NewsItem[]>([]);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [editingNews, setEditingNews] = useState<NewsItem | null>(null);
