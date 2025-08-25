@@ -1,8 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
-
-const newsFilePath = path.join(process.cwd(), "src/app/api/data/news.json");
 
 type NewsItem = {
   id: number;
@@ -14,21 +10,16 @@ type NewsItem = {
   updatedAt: string;
 };
 
+// In-memory storage (will reset on deployment)
+// For production, use a database like Vercel Postgres, MongoDB, etc.
+let newsData: NewsItem[] = [];
+
 function readNewsData(): NewsItem[] {
-  try {
-    if (!fs.existsSync(newsFilePath)) {
-      fs.writeFileSync(newsFilePath, JSON.stringify([]));
-      return [];
-    }
-    const data = fs.readFileSync(newsFilePath, "utf8");
-    return JSON.parse(data);
-  } catch {
-    return [];
-  }
+  return newsData;
 }
 
 function writeNewsData(data: NewsItem[]) {
-  fs.writeFileSync(newsFilePath, JSON.stringify(data, null, 2));
+  newsData = data;
 }
 
 export async function GET() {
