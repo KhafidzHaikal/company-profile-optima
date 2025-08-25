@@ -14,7 +14,25 @@ interface NewsData {
   updatedAt: string;
 }
 
+// In-memory storage for Vercel
+let memoryNewsData: NewsData[] = [
+  {
+    id: 1,
+    title: "Abu Dhabi Cultural Tour Now Available",
+    content: "Experience the rich culture and heritage of Abu Dhabi with our specially curated cultural tour package.",
+    excerpt: "Discover Abu Dhabi's rich culture and heritage with our new cultural tour package.",
+    image: "/articles/f2e0c84e-7086-4575-b2fd-239fc5a90c87.png",
+    createdAt: "2024-01-10T14:30:00Z",
+    updatedAt: "2024-01-10T14:30:00Z"
+  }
+];
+
+const isVercel = process.env.VERCEL === '1';
+
 async function readNewsData() {
+  if (isVercel) {
+    return memoryNewsData;
+  }
   try {
     const data = await fs.readFile(process.cwd() + '/src/app/api/data/news.json', 'utf8');
     return JSON.parse(data);
@@ -24,6 +42,10 @@ async function readNewsData() {
 }
 
 async function writeNewsData(data: NewsData[]) {
+  if (isVercel) {
+    memoryNewsData = data;
+    return;
+  }
   try {
     await fs.writeFile(process.cwd() + '/src/app/api/data/news.json', JSON.stringify(data, null, 2));
   } catch (error) {

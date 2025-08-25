@@ -26,7 +26,23 @@ interface AuthRequest {
 	action: "login" | "register";
 }
 
+// In-memory storage for Vercel
+let memoryUsersData: User[] = [
+	{
+		id: 1,
+		username: "admin",
+		name: "Administrator",
+		email: "admin@optima.com",
+		password: "$2b$10$hmMdVaYgA0O7DYLYsIV7KudlOfLFjD.fq81WBrsdAqZeR.mKdyOYK" // password: password
+	}
+];
+
+const isVercel = process.env.VERCEL === '1';
+
 async function readUsers(): Promise<User[]> {
+	if (isVercel) {
+		return memoryUsersData;
+	}
 	try {
 		const data = await fs.readFile(process.cwd() + '/src/app/api/data/data-user.json', 'utf8');
 		return data ? (JSON.parse(data) as User[]) : [];
@@ -36,6 +52,10 @@ async function readUsers(): Promise<User[]> {
 }
 
 async function writeUsers(users: User[]): Promise<void> {
+	if (isVercel) {
+		memoryUsersData = users;
+		return;
+	}
 	try {
 		await fs.writeFile(process.cwd() + '/src/app/api/data/data-user.json', JSON.stringify(users, null, 2));
 	} catch (error) {
