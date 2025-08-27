@@ -92,12 +92,12 @@ export function HumburgerButton() {
             >
               {t("portfolio")}
             </Link>
-            <Link
+            {/* <Link
               href={`/${locale}/news`}
               className="text-base font-medium text-muted-foreground hover:text-primary transition-colors"
             >
               {t("news")}
-            </Link>
+            </Link> */}
           </nav>
         </div>
 

@@ -17,7 +17,8 @@ import { ModeToggle } from "../button/ButtonTheme";
 import LogoutButton from "../button/LogoutButton";
 import Image from "next/image";
 import Link from "next/link";
-import { Images, Newspaper } from "lucide-react";
+// import { Images, Newspaper } from "lucide-react";
+import { Images } from "lucide-react";
 
 // Sample data
 const data = {
@@ -32,12 +33,12 @@ const data = {
 					isActive: false,
 					icon: Images,
 				},
-				{
-					title: "News",
-					url: "/dashboard/news",
-					isActive: false,
-					icon: Newspaper,
-				},
+				// {
+				// 	title: "News",
+				// 	url: "/dashboard/news",
+				// 	isActive: false,
+				// 	icon: Newspaper,
+				// },
 			],
 		},
 	],

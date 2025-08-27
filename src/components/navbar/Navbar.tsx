@@ -101,11 +101,11 @@ const Navbar = () => {
 									<Link href={`/${locale}/portfolio`}>{t("portfolio")}</Link>
 								</NavigationMenuLink>
 							</NavigationMenuItem>
-							<NavigationMenuItem>
+							{/* <NavigationMenuItem>
 								<NavigationMenuLink asChild>
 									<Link href={`/${locale}/news`}>{t("news")}</Link>
 								</NavigationMenuLink>
-							</NavigationMenuItem>
+							</NavigationMenuItem> */}
 						</NavigationMenuList>
 					</NavigationMenu>
 
